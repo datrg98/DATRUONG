@@ -2286,6 +2286,9 @@ video:-ms-fullscreen {
 }
 
 .skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--accent-black);
@@ -2296,10 +2299,39 @@ video:-ms-fullscreen {
   transition: all var(--transition-fast);
 }
 
+.skill-name {
+  line-height: 1;
+}
+
+.skill-rating {
+  display: inline-flex;
+  gap: 2px;
+  user-select: none;
+}
+
+.star {
+  color: #d1cfcb; /* Muted warm grey for unfilled stars */
+  font-size: 0.8rem;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.star.filled {
+  color: #ffb800; /* Warm gold/amber */
+}
+
 .skill-tag:hover {
   background-color: var(--accent-black);
   color: var(--text-light);
   border-color: var(--accent-black);
+}
+
+.skill-tag:hover .star {
+  color: rgba(255, 255, 255, 0.25); /* Muted white for unfilled on dark bg */
+}
+
+.skill-tag:hover .star.filled {
+  color: #ffd000; /* Slightly brighter gold on hover for contrast */
 }
 
 /* Credentials tab */
