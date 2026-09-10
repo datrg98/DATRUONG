@@ -75,17 +75,43 @@
           </a>
         </div>
 
+        <!-- Quick Stats Impact Bar -->
+        <div class="hero-stats-bar">
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">11.6M+</span>
+            <span class="hero-stat-label">Lượt xem kỷ lục</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">10+</span>
+            <span class="hero-stat-label">Thương hiệu lớn</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">5+ Năm</span>
+            <span class="hero-stat-label">Kinh nghiệm hậu kỳ</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">100%</span>
+            <span class="hero-stat-label">Chuẩn thương mại</span>
+          </div>
         </div>
       </div>
       
       <div class="hero-visual">
         <div class="hero-video-card">
-
+          <div class="hero-video-badge-top">
+            <span class="badge-dot pulse-red"></span> 4K SHOWREEL • 2026
+          </div>
           <!-- High-quality visual loop placeholder for editor showcase -->
           <video autoplay loop muted playsinline>
             <source src="/videos/DHA-TOPGUM.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+          <div class="hero-video-badge-bottom">
+            <span>⛶ Nhấn để xem kèm âm thanh</span>
+          </div>
         </div>
       </div>
     </div>
@@ -155,8 +181,6 @@
           NEW ERA
         </div>
       </div>
-    </div>
-  </div>
     </div>
   </div>
 
@@ -278,7 +302,7 @@
           <div class="about-tab-content" id="about-tab-skills">
             <div class="skills-tab-grid">
               <div class="skills-group">
-                <h4 class="skills-group-title">Hậu kỳ Video</h4>
+                <h4 class="skills-group-title"><span class="skills-group-icon">🎬</span> Hậu kỳ Video</h4>
                 <div class="skills-tags">
                   <div class="skill-tag">
                     <span class="skill-name">Premiere Pro</span>
@@ -314,7 +338,7 @@
               </div>
               
               <div class="skills-group">
-                <h4 class="skills-group-title">Thiết kế & Âm thanh</h4>
+                <h4 class="skills-group-title"><span class="skills-group-icon">🎨</span> Thiết kế & Âm thanh</h4>
                 <div class="skills-tags">
                   <div class="skill-tag">
                     <span class="skill-name">Illustrator</span>
@@ -340,7 +364,7 @@
               </div>
 
               <div class="skills-group">
-                <h4 class="skills-group-title">Bộ công cụ AI</h4>
+                <h4 class="skills-group-title"><span class="skills-group-icon">⚡</span> Bộ công cụ AI</h4>
                 <div class="skills-tags">
                   <div class="skill-tag">
                     <span class="skill-name">Runway</span>
@@ -386,7 +410,7 @@
               </div>
 
               <div class="skills-group">
-                <h4 class="skills-group-title">Thế mạnh cốt lõi</h4>
+                <h4 class="skills-group-title"><span class="skills-group-icon">💼</span> Thế mạnh cốt lõi</h4>
                 <div class="skills-tags">
                   <div class="skill-tag">
                     <span class="skill-name">Quản lý đội ngũ</span>
@@ -483,9 +507,9 @@
       
       <!-- Category Tabs -->
       <div class="work-tabs">
-        <button class="tab-btn active" data-tab="all">Tất cả video</button>
-        <button class="tab-btn" data-tab="widescreen">Video ngang (16:9)</button>
-        <button class="tab-btn" data-tab="vertical">Shorts & Reels</button>
+        <button class="tab-btn active" data-tab="all">Tất cả video <span class="tab-count">18</span></button>
+        <button class="tab-btn" data-tab="widescreen">Video ngang (16:9) <span class="tab-count">4</span></button>
+        <button class="tab-btn" data-tab="vertical">Shorts & Reels (9:16) <span class="tab-count">14</span></button>
       </div>
       
       <!-- Widescreen Cinematic Grid -->
@@ -493,52 +517,64 @@
       <div class="work-grid widescreen-grid active" id="widescreen-container">
         <!-- Card DHA-TOPGUM.mp4 -->
         <div class="work-card video-card-landscape" data-type="widescreen">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/DHA-TOPGUM.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">DHA</span>
-              <span class="work-time">Khung hình ngang</span>
+              <span class="work-badge">Phim Thương Mại</span>
             </div>
             <h3 class="work-title">DHA</h3>
           </div>
         </div>
         <!-- Card OBAGI CASE STUDY.mp4 -->
         <div class="work-card video-card-landscape" data-type="widescreen">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/OBAGI CASE STUDY.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Obagi</span>
-              <span class="work-time">Khung hình ngang</span>
+              <span class="work-badge">Case Study</span>
             </div>
             <h3 class="work-title">Obagi</h3>
           </div>
         </div>
         <!-- Card MATTHIEU.mp4 -->
         <div class="work-card video-card-landscape" data-type="widescreen">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/MATTHIEU.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Matthieu</span>
-              <span class="work-time">Khung hình ngang</span>
+              <span class="work-badge">Phim Điện Ảnh</span>
             </div>
             <h3 class="work-title">Matthieu</h3>
           </div>
         </div>
         <!-- Card ONPOINT-10 YEARS.mp4 -->
         <div class="work-card video-card-landscape" data-type="widescreen">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/ONPOINT-10 YEARS.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">OnPoint</span>
-              <span class="work-time">Khung hình ngang</span>
+              <span class="work-badge">Reel Doanh Nghiệp 10 Năm</span>
             </div>
             <h3 class="work-title">OnPoint</h3>
           </div>
@@ -550,182 +586,224 @@
       <div class="work-grid vertical-grid active" id="vertical-container">
         <!-- Card NN2303328.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/NN2303328.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Nordic Natural</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Sức Khỏe • 9:16</span>
             </div>
             <h3 class="work-title">Nordic Natural</h3>
           </div>
         </div>
         <!-- Card ORB2603363.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/ORB2603363.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Oral B</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Chiến Dịch QC • 9:16</span>
             </div>
             <h3 class="work-title">Oral B</h3>
           </div>
         </div>
         <!-- Card RSC10091092.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/RSC10091092.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Rohto Skincare</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Mỹ Phẩm • 9:16</span>
             </div>
             <h3 class="work-title">Rohto Skincare</h3>
           </div>
         </div>
         <!-- Card OL0603306.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/OL0603306.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Olay</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Dưỡng Da • 9:16</span>
             </div>
             <h3 class="work-title">Olay</h3>
           </div>
         </div>
         <!-- Card R08122692.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/R08122692.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Rohto Health and Beauty</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Thương Hiệu • 9:16</span>
             </div>
             <h3 class="work-title">Rohto Health and Beauty</h3>
           </div>
         </div>
         <!-- Card YM0907318.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/YM0907318.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Yaman</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Công Nghệ Làm Đẹp • 9:16</span>
             </div>
             <h3 class="work-title">Yaman</h3>
           </div>
         </div>
         <!-- Card TBS1707612.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/TBS1707612.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">The Body Shop</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Promo Reel • 9:16</span>
             </div>
             <h3 class="work-title">The Body Shop</h3>
           </div>
         </div>
         <!-- Card ADD0203302.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/ADD0203302.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Adidas</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Thời Trang Thể Thao • 9:16</span>
             </div>
             <h3 class="work-title">Adidas</h3>
           </div>
         </div>
         <!-- Card RHB10061217.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/RHB10061217.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Rohto Health and Beauty</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Thương Mại Điện Tử • 9:16</span>
             </div>
             <h3 class="work-title">Rohto Health and Beauty</h3>
           </div>
         </div>
         <!-- Card GL0703252.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/GL0703252.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Gillette</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Chuyển Động Sản Phẩm • 9:16</span>
             </div>
             <h3 class="work-title">Gillette</h3>
           </div>
         </div>
         <!-- Card PM2503623.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/PM2503623.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Puma</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Giày & Thời Trang • 9:16</span>
             </div>
             <h3 class="work-title">Puma</h3>
           </div>
         </div>
         <!-- Card GL30061666.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/GL30061666.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Gillette</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Video Xu Hướng • 9:16</span>
             </div>
             <h3 class="work-title">Gillette</h3>
           </div>
         </div>
         <!-- Card ADD02012898_.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/ADD02012898_.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Adidas</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Chiến Dịch Quảng Bá • 9:16</span>
             </div>
             <h3 class="work-title">Adidas</h3>
           </div>
         </div>
         <!-- Card PM1206255.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/PM1206255.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Puma</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Mega Day Sale • 9:16</span>
             </div>
             <h3 class="work-title">Puma</h3>
           </div>
@@ -750,6 +828,12 @@
           <div class="service-name">Sản xuất Hậu kỳ Thương mại</div>
           <div class="service-desc-wrapper">
             <p class="service-desc">Dựng phim toàn diện, kể chuyện hình ảnh nghệ thuật và thiết kế nội dung video chuyên nghiệp cho các thương hiệu hàng đầu.</p>
+            <div class="service-tags">
+              <span class="service-tag-pill">Premiere Pro</span>
+              <span class="service-tag-pill">Chỉnh màu DaVinci</span>
+              <span class="service-tag-pill">Hiệu ứng Âm thanh SFX</span>
+              <span class="service-tag-pill">Chuẩn 4K Master</span>
+            </div>
             <div class="service-arrow">➔</div>
           </div>
         </div>
@@ -760,6 +844,12 @@
           <div class="service-name">Tích hợp Sáng tạo Gen-AI</div>
           <div class="service-desc-wrapper">
             <p class="service-desc">Tối ưu hóa tiến độ bằng cách ứng dụng các bộ công cụ AI thế hệ mới (Runway, Kling, Vbee) vào quy trình hậu kỳ truyền thống.</p>
+            <div class="service-tags">
+              <span class="service-tag-pill">Runway Gen-3</span>
+              <span class="service-tag-pill">Kling AI</span>
+              <span class="service-tag-pill">Giọng đọc AI Vbee</span>
+              <span class="service-tag-pill">Dựng kết hợp Hybrid</span>
+            </div>
             <div class="service-arrow">➔</div>
           </div>
         </div>
@@ -770,6 +860,12 @@
           <div class="service-name">Đồ họa Chuyển động & Chiến dịch</div>
           <div class="service-desc-wrapper">
             <p class="service-desc">Sản xuất motion graphics, chữ động nghệ thuật (kinetic typography) tối ưu tỷ lệ chuyển đổi cho các chiến dịch e-commerce lớn.</p>
+            <div class="service-tags">
+              <span class="service-tag-pill">After Effects</span>
+              <span class="service-tag-pill">Kinetic Typography</span>
+              <span class="service-tag-pill">Bộ đồ họa Mega Day</span>
+              <span class="service-tag-pill">Tối ưu Hook & Giữ chân</span>
+            </div>
             <div class="service-arrow">➔</div>
           </div>
         </div>
@@ -780,6 +876,11 @@
           <div class="service-name">Video Sizzle & Chào hàng Doanh nghiệp</div>
           <div class="service-desc-wrapper">
             <p class="service-desc">Thực hiện sizzle reel giới thiệu dự án và pitch video chất lượng cao giúp doanh nghiệp đấu thầu thương mại và ký kết hợp đồng.</p>
+            <div class="service-tags">
+              <span class="service-tag-pill">Pitch Video Doanh nghiệp</span>
+              <span class="service-tag-pill">Showreel Thầu Dự Án</span>
+              <span class="service-tag-pill">Dựng Câu Chuyện Nhãn Hàng</span>
+            </div>
             <div class="service-arrow">➔</div>
           </div>
         </div>
@@ -790,6 +891,11 @@
           <div class="service-name">Nhiếp ảnh & Chỉnh sửa Thương mại</div>
           <div class="service-desc-wrapper">
             <p class="service-desc">Chụp hình studio thương mại cao cấp, xây dựng sơ đồ ánh sáng chuyên dụng và xử lý hậu kỳ da, chi tiết sản phẩm chất lượng cao.</p>
+            <div class="service-tags">
+              <span class="service-tag-pill">Sơ đồ Ánh sáng Studio</span>
+              <span class="service-tag-pill">Retouch Da & Sản phẩm</span>
+              <span class="service-tag-pill">Bộ ảnh Lookbook</span>
+            </div>
             <div class="service-arrow">➔</div>
           </div>
         </div>
@@ -942,8 +1048,8 @@
   <footer class="footer-cta">
     <div class="container">
       <div class="cta-box">
-        <h2 class="cta-title">Bắt đầu hành trình sáng tạo video</h2>
-        <p class="cta-desc">Hãy bắt đầu dựng các video chỉn chu ngay hôm nay cùng tôi để phát triển kênh nhanh hơn.</p>
+        <h2 class="cta-title">Nâng tầm thương hiệu qua video điện ảnh</h2>
+        <p class="cta-desc">Đồng hành cùng tôi để sản xuất các ấn phẩm video chất lượng cao và giữ chân khán giả hiệu quả.</p>
         <a href="/contact-vi.html" class="btn btn-primary btn-lg">Liên hệ tôi</a>
       </div>
 
@@ -955,20 +1061,20 @@
           <span>Dat</span>
         </a>
         <div class="footer-links">
-          <a href="#about">Giới thiệu</a>
-          <a href="#work">Dự án</a>
-          <a href="#services">Dịch vụ</a>
-          </div>
+          <a href="/index-vi.html#about">Giới thiệu</a>
+          <a href="/index-vi.html#work">Dự án</a>
+          <a href="/index-vi.html#services">Dịch vụ</a>
+        </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Dat. Bảo lưu mọi quyền.</p>
+        <p>&copy; 2026 Đạt Trương. Bảo lưu mọi quyền.</p>
         <div class="footer-socials">
-          <a href="#" class="social-link">Twitter</a>
-          <a href="#" class="social-link">Instagram</a>
-          <a href="#" class="social-link">YouTube</a>
+          <a href="mailto:dattvq98@gmail.com" class="social-link">Email</a>
+          <a href="tel:0708814771" class="social-link">Điện thoại</a>
+          <a href="https://github.com/datrg98" target="_blank" rel="noopener" class="social-link">GitHub</a>
         </div>
-        <p class="credits">Mẫu dựng bởi <a href="#" target="_blank">AI Assistant</a></p>
+        <p class="credits">Senior Video Editor & Chuyên gia Truyền thông</p>
       </div>
     </div>
   </footer>

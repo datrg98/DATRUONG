@@ -75,17 +75,43 @@
           </a>
         </div>
 
+        <!-- Quick Stats Impact Bar -->
+        <div class="hero-stats-bar">
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">11.6M+</span>
+            <span class="hero-stat-label">Peak Viral Views</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">10+</span>
+            <span class="hero-stat-label">Tier-1 Brands</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">5+ Yrs</span>
+            <span class="hero-stat-label">Directing & Editing</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">100%</span>
+            <span class="hero-stat-label">Commercial Grade</span>
+          </div>
         </div>
       </div>
       
       <div class="hero-visual">
         <div class="hero-video-card">
-
+          <div class="hero-video-badge-top">
+            <span class="badge-dot pulse-red"></span> 4K SHOWREEL • 2026
+          </div>
           <!-- High-quality visual loop placeholder for editor showcase -->
           <video autoplay loop muted playsinline>
             <source src="/videos/DHA-TOPGUM.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+          <div class="hero-video-badge-bottom">
+            <span>⛶ Click to watch with sound</span>
+          </div>
         </div>
       </div>
     </div>
@@ -155,8 +181,6 @@
           NEW ERA
         </div>
       </div>
-    </div>
-  </div>
     </div>
   </div>
 
@@ -278,7 +302,7 @@
           <div class="about-tab-content" id="about-tab-skills">
             <div class="skills-tab-grid">
               <div class="skills-group">
-                <h4 class="skills-group-title">Post-Production</h4>
+                <h4 class="skills-group-title"><span class="skills-group-icon">🎬</span> Post-Production</h4>
                 <div class="skills-tags">
                   <div class="skill-tag">
                     <span class="skill-name">Premiere Pro</span>
@@ -314,7 +338,7 @@
               </div>
               
               <div class="skills-group">
-                <h4 class="skills-group-title">Asset Design</h4>
+                <h4 class="skills-group-title"><span class="skills-group-icon">🎨</span> Asset Design & Sound</h4>
                 <div class="skills-tags">
                   <div class="skill-tag">
                     <span class="skill-name">Illustrator</span>
@@ -340,7 +364,7 @@
               </div>
 
               <div class="skills-group">
-                <h4 class="skills-group-title">AI Content Suite</h4>
+                <h4 class="skills-group-title"><span class="skills-group-icon">⚡</span> AI Content Suite</h4>
                 <div class="skills-tags">
                   <div class="skill-tag">
                     <span class="skill-name">Runway</span>
@@ -386,7 +410,7 @@
               </div>
 
               <div class="skills-group">
-                <h4 class="skills-group-title">Core Strengths</h4>
+                <h4 class="skills-group-title"><span class="skills-group-icon">💼</span> Core Strengths</h4>
                 <div class="skills-tags">
                   <div class="skill-tag">
                     <span class="skill-name">Team Leadership</span>
@@ -483,9 +507,9 @@
       
       <!-- Category Tabs -->
       <div class="work-tabs">
-        <button class="tab-btn active" data-tab="all">All Edits</button>
-        <button class="tab-btn" data-tab="widescreen">Widescreen Promos</button>
-        <button class="tab-btn" data-tab="vertical">Shorts & Reels</button>
+        <button class="tab-btn active" data-tab="all">All Edits <span class="tab-count">18</span></button>
+        <button class="tab-btn" data-tab="widescreen">Widescreen Promos <span class="tab-count">4</span></button>
+        <button class="tab-btn" data-tab="vertical">Shorts & Reels <span class="tab-count">14</span></button>
       </div>
       
       <!-- Widescreen Cinematic Grid -->
@@ -493,52 +517,64 @@
       <div class="work-grid widescreen-grid active" id="widescreen-container">
         <!-- Card DHA-TOPGUM.mp4 -->
         <div class="work-card video-card-landscape" data-type="widescreen">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/DHA-TOPGUM.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">DHA</span>
-              <span class="work-time">Widescreen</span>
+              <span class="work-badge">Commercial Film</span>
             </div>
             <h3 class="work-title">DHA</h3>
           </div>
         </div>
         <!-- Card OBAGI CASE STUDY.mp4 -->
         <div class="work-card video-card-landscape" data-type="widescreen">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/OBAGI CASE STUDY.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Obagi</span>
-              <span class="work-time">Widescreen</span>
+              <span class="work-badge">Case Study</span>
             </div>
             <h3 class="work-title">Obagi</h3>
           </div>
         </div>
         <!-- Card MATTHIEU.mp4 -->
         <div class="work-card video-card-landscape" data-type="widescreen">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/MATTHIEU.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Matthieu</span>
-              <span class="work-time">Widescreen</span>
+              <span class="work-badge">Cinematic Narrative</span>
             </div>
             <h3 class="work-title">Matthieu</h3>
           </div>
         </div>
         <!-- Card ONPOINT-10 YEARS.mp4 -->
         <div class="work-card video-card-landscape" data-type="widescreen">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/ONPOINT-10 YEARS.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">OnPoint</span>
-              <span class="work-time">Widescreen</span>
+              <span class="work-badge">Corporate 10Y Reel</span>
             </div>
             <h3 class="work-title">OnPoint</h3>
           </div>
@@ -550,182 +586,224 @@
       <div class="work-grid vertical-grid active" id="vertical-container">
         <!-- Card NN2303328.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/NN2303328.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Nordic Natural</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Nutrition • 9:16</span>
             </div>
             <h3 class="work-title">Nordic Natural</h3>
           </div>
         </div>
         <!-- Card ORB2603363.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/ORB2603363.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Oral B</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Campaign Ad • 9:16</span>
             </div>
             <h3 class="work-title">Oral B</h3>
           </div>
         </div>
         <!-- Card RSC10091092.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/RSC10091092.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Rohto Skincare</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Beauty • 9:16</span>
             </div>
             <h3 class="work-title">Rohto Skincare</h3>
           </div>
         </div>
         <!-- Card OL0603306.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/OL0603306.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Olay</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Cosmetics • 9:16</span>
             </div>
             <h3 class="work-title">Olay</h3>
           </div>
         </div>
         <!-- Card R08122692.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/R08122692.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Rohto Health and Beauty</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Brand Series • 9:16</span>
             </div>
             <h3 class="work-title">Rohto Health and Beauty</h3>
           </div>
         </div>
         <!-- Card YM0907318.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/YM0907318.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Yaman</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Tech Beauty • 9:16</span>
             </div>
             <h3 class="work-title">Yaman</h3>
           </div>
         </div>
         <!-- Card TBS1707612.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/TBS1707612.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">The Body Shop</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Promo Reel • 9:16</span>
             </div>
             <h3 class="work-title">The Body Shop</h3>
           </div>
         </div>
         <!-- Card ADD0203302.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/ADD0203302.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Adidas</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Sportswear • 9:16</span>
             </div>
             <h3 class="work-title">Adidas</h3>
           </div>
         </div>
         <!-- Card RHB10061217.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/RHB10061217.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Rohto Health and Beauty</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">E-Commerce • 9:16</span>
             </div>
             <h3 class="work-title">Rohto Health and Beauty</h3>
           </div>
         </div>
         <!-- Card GL0703252.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/GL0703252.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Gillette</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Product Motion • 9:16</span>
             </div>
             <h3 class="work-title">Gillette</h3>
           </div>
         </div>
         <!-- Card PM2503623.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/PM2503623.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Puma</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Footwear • 9:16</span>
             </div>
             <h3 class="work-title">Puma</h3>
           </div>
         </div>
         <!-- Card GL30061666.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/GL30061666.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Gillette</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Viral Clip • 9:16</span>
             </div>
             <h3 class="work-title">Gillette</h3>
           </div>
         </div>
         <!-- Card ADD02012898_.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/ADD02012898_.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Adidas</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Brand Campaign • 9:16</span>
             </div>
             <h3 class="work-title">Adidas</h3>
           </div>
         </div>
         <!-- Card PM1206255.mp4 -->
         <div class="work-card video-card-portrait" data-type="vertical">
+          <div class="work-play-indicator">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
           <video class="work-video" loop muted playsinline preload="metadata">
             <source src="/videos/PM1206255.mp4" type="video/mp4">
           </video>
           <div class="work-overlay">
             <div class="work-meta">
               <span class="work-client">Puma</span>
-              <span class="work-time">Reels / Shorts</span>
+              <span class="work-badge">Mega Day Sale • 9:16</span>
             </div>
             <h3 class="work-title">Puma</h3>
           </div>
@@ -750,6 +828,12 @@
           <div class="service-name">Commercial Post-Production</div>
           <div class="service-desc-wrapper">
             <p class="service-desc">End-to-end video editing, visual storytelling, and high-impact content creation for premium brand portfolios.</p>
+            <div class="service-tags">
+              <span class="service-tag-pill">Premiere Pro</span>
+              <span class="service-tag-pill">DaVinci Color</span>
+              <span class="service-tag-pill">Immersive SFX</span>
+              <span class="service-tag-pill">4K Master Delivery</span>
+            </div>
             <div class="service-arrow">➔</div>
           </div>
         </div>
@@ -760,6 +844,12 @@
           <div class="service-name">Gen-AI Creative Integration</div>
           <div class="service-desc-wrapper">
             <p class="service-desc">Accelerating creative pipelines by operationalizing advanced generative AI suites (Runway, Kling, Vbee) into traditional timelines.</p>
+            <div class="service-tags">
+              <span class="service-tag-pill">Runway Gen-3</span>
+              <span class="service-tag-pill">Kling AI</span>
+              <span class="service-tag-pill">Vbee Voiceover</span>
+              <span class="service-tag-pill">Hybrid Timelines</span>
+            </div>
             <div class="service-arrow">➔</div>
           </div>
         </div>
@@ -770,6 +860,12 @@
           <div class="service-name">Campaign Assets & Motion Design</div>
           <div class="service-desc-wrapper">
             <p class="service-desc">Producing high-conversion motion graphics, kinetic typography, and visual assets tailored for key e-commerce milestones.</p>
+            <div class="service-tags">
+              <span class="service-tag-pill">After Effects</span>
+              <span class="service-tag-pill">Kinetic Typography</span>
+              <span class="service-tag-pill">Mega Day Kits</span>
+              <span class="service-tag-pill">High-CTR Hooks</span>
+            </div>
             <div class="service-arrow">➔</div>
           </div>
         </div>
@@ -780,6 +876,12 @@
           <div class="service-name">Corporate Sizzle Reels & Pitches</div>
           <div class="service-desc-wrapper">
             <p class="service-desc">Crafting high-concept pitch videos and promotional sizzle reels designed to secure commercial contracts and corporate accounts.</p>
+            <div class="service-tags">
+              <span class="service-tag-pill">Corporate Pitch</span>
+              <span class="service-tag-pill">Story Editing</span>
+              <span class="service-tag-pill">Brand Showreels</span>
+              <span class="service-tag-pill">Tender Wins</span>
+            </div>
             <div class="service-arrow">➔</div>
           </div>
         </div>
@@ -790,6 +892,11 @@
           <div class="service-name">Commercial Photography & Retouching</div>
           <div class="service-desc-wrapper">
             <p class="service-desc">Executing high-end commercial studio photography, custom lighting design, and precise skin and product retouching.</p>
+            <div class="service-tags">
+              <span class="service-tag-pill">Studio Lighting Maps</span>
+              <span class="service-tag-pill">Skin & Product Retouch</span>
+              <span class="service-tag-pill">Brand Lookbooks</span>
+            </div>
             <div class="service-arrow">➔</div>
           </div>
         </div>
@@ -886,7 +993,7 @@
         <!-- FAQ 3 -->
         <div class="faq-item">
           <button class="faq-question">
-            Which platforms does Cutflow support for video editing?
+            Which platforms and formats do you edit for?
             <span class="faq-icon"></span>
           </button>
           <div class="faq-answer">
@@ -917,7 +1024,7 @@
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              For standard monthly plans, raw footage files up to 10GB or 15 minutes of runtime are covered under normal turnaround times. Longer raw files can be submitted but may require extended delivery schedules discussed with your project manager.
+              Standard commercial deliverables typically cover raw footage files up to 10GB or 15 minutes of runtime with standard turnaround times. Longer raw files or documentary formats can be submitted and discussed directly based on project scope.
             </div>
           </div>
         </div>
@@ -942,8 +1049,8 @@
   <footer class="footer-cta">
     <div class="container">
       <div class="cta-box">
-        <h2 class="cta-title">Start your video journey</h2>
-        <p class="cta-desc">Start creating polished videos today with me and grow your audience faster.</p>
+        <h2 class="cta-title">Elevate your brand with cinematic edits</h2>
+        <p class="cta-desc">Partner with me to produce high-impact, high-retention video content for your brand campaigns.</p>
         <a href="/contact.html" class="btn btn-primary btn-lg">Contact me</a>
       </div>
 
@@ -958,17 +1065,17 @@
           <a href="#about">About</a>
           <a href="#work">Work</a>
           <a href="#services">Services</a>
-          </div>
+        </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Dat. All rights reserved.</p>
+        <p>&copy; 2026 Dat Truong. All rights reserved.</p>
         <div class="footer-socials">
-          <a href="#" class="social-link">Twitter</a>
-          <a href="#" class="social-link">Instagram</a>
-          <a href="#" class="social-link">YouTube</a>
+          <a href="mailto:dattvq98@gmail.com" class="social-link">Email</a>
+          <a href="tel:0708814771" class="social-link">Phone</a>
+          <a href="https://github.com/datrg98" target="_blank" rel="noopener" class="social-link">GitHub</a>
         </div>
-        <p class="credits">Template recreated by <a href="#" target="_blank">AI Assistant</a></p>
+        <p class="credits">Senior Video Editor & Media Specialist</p>
       </div>
     </div>
   </footer>

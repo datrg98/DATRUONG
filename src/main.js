@@ -183,71 +183,15 @@ function enterFullscreen(video) {
 }
 
 /**
- * 5. Contact Form Validation, Custom Select, and Success Animations
+ * 5. Contact Form Validation and Success Animations
  */
 function initContactForm() {
   const form = document.getElementById('contact-form');
-  const selectBtn = document.getElementById('service-select-btn');
-  const optionsList = document.getElementById('service-options');
-  const options = optionsList.querySelectorAll('.select-option');
-  const hiddenInput = document.getElementById('selected-service-value');
   const formContainer = document.getElementById('form-container');
   const successContainer = document.getElementById('success-container');
   const resetBtn = document.getElementById('reset-form-btn');
 
-  if (!form || !selectBtn || !optionsList) return;
-
-  // Toggle dropdown options visibility
-  selectBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    selectBtn.classList.toggle('open');
-    optionsList.classList.toggle('open');
-  });
-
-  // Handle select option click
-  options.forEach(opt => {
-    opt.addEventListener('click', (e) => {
-      e.stopPropagation();
-      
-      const value = opt.getAttribute('data-value');
-      const text = opt.textContent;
-
-      // Update UI selection state
-      options.forEach(o => o.classList.remove('selected'));
-      opt.classList.add('selected');
-
-      // Update button text and hidden input value
-      selectBtn.textContent = text;
-      hiddenInput.value = value;
-
-      // Close options panel
-      selectBtn.classList.remove('open');
-      optionsList.classList.remove('open');
-      selectBtn.style.borderColor = 'var(--border-color)';
-    });
-  });
-
-  // Close dropdown on click outside
-  document.addEventListener('click', () => {
-    selectBtn.classList.remove('open');
-    optionsList.classList.remove('open');
-  });
-
-  // Check URL parameters to auto-select plan in dropdown
-  const urlParams = new URLSearchParams(window.location.search);
-  const planParam = urlParams.get('plan');
-  if (planParam) {
-    let targetValue = '';
-    if (planParam === 'creators') targetValue = 'commercial-post'; // Maps to Commercial Post-Production
-    if (planParam === 'agencies') targetValue = 'custom-projects';   // Maps to Custom / Other
-    
-    if (targetValue) {
-      const matchingOption = Array.from(options).find(o => o.getAttribute('data-value') === targetValue);
-      if (matchingOption) {
-        matchingOption.click();
-      }
-    }
-  }
+  if (!form || !formContainer || !successContainer) return;
 
   // Handle Form Submission
   form.addEventListener('submit', (e) => {
@@ -266,14 +210,6 @@ function initContactForm() {
       }
     });
 
-    // Validate hidden service select
-    if (!hiddenInput.value) {
-      selectBtn.style.borderColor = 'var(--accent-red)';
-      isValid = false;
-    } else {
-      selectBtn.style.borderColor = 'var(--border-color)';
-    }
-
     if (!isValid) return;
 
     // Simulate form submission process (loading states)
@@ -290,19 +226,19 @@ function initContactForm() {
       // Reset button
       submitBtn.disabled = false;
       submitBtn.textContent = originalText;
-    }, 1200);
+    }, 1000);
   });
 
   // Handle Reset Form button
-  resetBtn.addEventListener('click', () => {
-    form.reset();
-    hiddenInput.value = '';
-    selectBtn.textContent = 'Select a service';
-    options.forEach(o => o.classList.remove('selected'));
-    
-    successContainer.style.display = 'none';
-    formContainer.style.display = 'block';
-  });
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      form.reset();
+      const inputs = form.querySelectorAll('.form-input, .form-textarea');
+      inputs.forEach(input => input.style.borderColor = 'var(--border-color)');
+      successContainer.style.display = 'none';
+      formContainer.style.display = 'block';
+    });
+  }
 }
 
 
