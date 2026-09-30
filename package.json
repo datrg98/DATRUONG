@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "node scripts/render-pages.mjs && vite build",
+    "preview": "vite preview",
+    "render": "node scripts/render-pages.mjs"
   },
   "devDependencies": {
     "vite": "^8.0.12"

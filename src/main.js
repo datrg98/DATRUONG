@@ -1,360 +1,140 @@
-// main.js - Core UI Interactivity for Cutflow Website
-
-document.addEventListener('DOMContentLoaded', () => {
-  initHeaderScroll();
-  initMobileMenu();
-  initFaqAccordion();
-  initVideoHoverPlay();
-  initWorkTabs();
-  initReactionsCounter();
-  initAboutTabs();
-  
-  // Only execute contact page logic if elements exist
-  if (document.getElementById('contact-form')) {
-    initContactForm();
-  }
+// Shared interactions for both languages and all four static pages.
+import './motion.js';
+const vi = document.documentElement.lang === 'vi';
+const t = (en, vn) => vi ? vn : en;
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('#mobile-menu');
+function closeMenu() { menu.hidden = true; menuToggle.setAttribute('aria-expanded', 'false'); }
+menuToggle?.addEventListener('click', () => {
+  const open = menuToggle.getAttribute('aria-expanded') !== 'true';
+  menuToggle.setAttribute('aria-expanded', String(open));
+  menu.hidden = !open;
 });
+menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+document.addEventListener('click', event => { if (!event.target.closest('.nav')) closeMenu(); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape' && !menu.hidden) { closeMenu(); menuToggle.focus(); } });
+matchMedia('(min-width: 761px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
 
-/**
- * 1. Sticky Header scroll effect
- */
-function initHeaderScroll() {
-  const header = document.getElementById('site-header');
-  if (!header) return;
+const dialog = document.querySelector('#film-player');
+if (dialog) {
+  const video = document.querySelector('#player-video');
+  const status = document.querySelector('#player-status');
+  let opener;
+  let generation = 0;
+  function openVideo(button, trigger = button) {
+    opener = trigger;
+    const current = ++generation;
+    document.querySelector('#player-title').textContent = button.dataset.title;
+    status.textContent = '';
+    video.poster = button.dataset.poster || '';
+    video.src = '/videos/' + encodeURIComponent(button.dataset.video);
+    document.querySelector('#player-direct').href = video.src;
+    dialog.showModal();
+    video.muted = false;
+    video.play().catch(error => {
+      if (generation === current && dialog.open && error.name !== 'AbortError') status.textContent = t('Press play to start the film.', 'Nhấn phát để bắt đầu xem phim.');
+    });
+  }
+  document.querySelectorAll('[data-video]').forEach(button => button.addEventListener('click', () => openVideo(button)));
+  const featuredTrigger = document.querySelector('[data-play-feature]');
+  featuredTrigger?.addEventListener('click', () => openVideo(document.querySelector('.feature-art'), featuredTrigger));
+  dialog.querySelector('.close-player').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    const bounds = dialog.getBoundingClientRect();
+    if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
+  });
+  dialog.addEventListener('close', () => {
+    generation++;
+    video.pause();
+    video.removeAttribute('src');
+    video.removeAttribute('poster');
+    video.load();
+    status.textContent = '';
+    opener?.focus({ preventScroll: true });
+  });
+  video.addEventListener('playing', () => { status.textContent = ''; });
+  video.addEventListener('error', () => {
+    if (dialog.open && video.getAttribute('src')) status.textContent = t('The video could not load. Please try the direct video link below.', 'Không thể tải video. Vui lòng thử liên kết mở video trực tiếp bên dưới.');
+  });
+}
 
-  const handleScroll = () => {
-    if (window.scrollY > 20) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+const filterButtons = [...document.querySelectorAll('[data-filter]')];
+const groups = [...document.querySelectorAll('[data-group]')];
+const extraProjects = [...document.querySelectorAll('.extra-project')];
+const moreButton = document.querySelector('#more-projects');
+let activeFilter = 'all';
+let expanded = false;
+const totalSocial = document.querySelectorAll('#social-projects .project-card').length;
+const totalBrand = document.querySelectorAll('.brand-grid .project-card').length;
+const totalFilm = document.querySelectorAll('.featured-film').length;
+const totalAll = totalFilm + totalBrand + totalSocial;
+
+function updateProjectCount() {
+  const count = document.querySelector('#project-count');
+  if (!count) return;
+  const total = activeFilter === 'social' ? totalSocial : totalAll;
+  const visible = (expanded ? totalSocial : 4) + (activeFilter === 'all' ? (totalFilm + totalBrand) : 0);
+  count.textContent = t(`Showing ${visible} of ${total} projects`, `Đang hiển thị ${visible} / ${total} dự án`);
+}
+filterButtons.forEach(button => button.addEventListener('click', () => {
+  activeFilter = button.dataset.filter;
+  filterButtons.forEach(filter => {
+    const selected = filter === button;
+    filter.setAttribute('aria-pressed', String(selected));
+    filter.classList.toggle('active', selected);
+  });
+  groups.forEach(group => { group.hidden = activeFilter !== 'all' && group.dataset.group !== activeFilter; });
+  updateProjectCount();
+}));
+moreButton?.addEventListener('click', () => {
+  expanded = !expanded;
+  extraProjects.forEach(project => { project.hidden = !expanded; });
+  moreButton.setAttribute('aria-expanded', String(expanded));
+  moreButton.textContent = expanded ? t('Show fewer edits −', 'Thu gọn video −') : t(`Explore all ${totalSocial} social edits +`, `Xem tất cả ${totalSocial} video social +`);
+  updateProjectCount();
+  if (!expanded) document.querySelector('[data-group="social"]').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+});
+updateProjectCount();
+
+const form = document.querySelector('#contact-form');
+if (form) {
+  const service = document.querySelector('#service');
+  const selected = new URLSearchParams(location.search).get('service');
+  if ([...service.options].some(option => option.value === selected)) service.value = selected;
+  let brief = '';
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const name = form.elements.name.value.trim();
+    const email = form.elements.email.value.trim();
+    const message = form.elements.message.value.trim();
+    if (!name || !message) {
+      const field = !name ? form.elements.name : form.elements.message;
+      field.setCustomValidity(t('Please enter a value.', 'Vui lòng nhập nội dung.'));
+      field.reportValidity();
+      field.addEventListener('input', () => field.setCustomValidity(''), { once: true });
+      return;
     }
-  };
-
-  window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Run initially in case page loaded scrolled down
-}
-
-/**
- * 2. Mobile Navigation Toggle
- */
-function initMobileMenu() {
-  const toggleBtn = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
-  
-  if (!toggleBtn || !navMenu) return;
-
-  toggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleBtn.classList.toggle('open');
-    navMenu.classList.toggle('open');
+    const serviceName = service.value ? service.selectedOptions[0].textContent : t('To discuss', 'Cần trao đổi');
+    brief = `${t('Name', 'Tên')}: ${name}\nEmail: ${email}\n${t('Service', 'Dịch vụ')}: ${serviceName}\n\n${message}`;
+    const subject = t(`Project enquiry — ${name}`, `Trao đổi dự án — ${name}`);
+    document.querySelector('#email-draft').href = `mailto:dattvq98@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(brief)}`;
+    document.querySelector('#email-ready').hidden = false;
+    document.querySelector('#brief-fallback').hidden = true;
+    document.querySelector('#copy-brief').textContent = t('Copy brief', 'Sao chép brief');
+    document.querySelector('#email-draft').focus();
   });
-
-  // Close menu when clicking links
-  const navLinks = navMenu.querySelectorAll('a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      toggleBtn.classList.remove('open');
-      navMenu.classList.remove('open');
-    });
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
-      toggleBtn.classList.remove('open');
-      navMenu.classList.remove('open');
+  document.querySelector('#copy-brief').addEventListener('click', async event => {
+    try {
+      await navigator.clipboard.writeText(brief);
+      event.target.textContent = t('Copied ✓', 'Đã sao chép ✓');
+    } catch {
+      const fallback = document.querySelector('#brief-fallback');
+      fallback.hidden = false;
+      fallback.value = brief;
+      fallback.focus();
+      fallback.select();
+      event.target.textContent = t('Select and copy the text below', 'Chọn và sao chép nội dung bên dưới');
     }
-  });
-}
-
-/**
- * 3. FAQ Accordion Logic
- */
-function initFaqAccordion() {
-  const faqItems = document.querySelectorAll('.faq-item');
-  if (faqItems.length === 0) return;
-
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
-
-    if (!question || !answer) return;
-
-    question.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      
-      // Close all other open items
-      faqItems.forEach(otherItem => {
-        if (otherItem !== item && otherItem.classList.contains('active')) {
-          otherItem.classList.remove('active');
-          otherItem.querySelector('.faq-answer').style.maxHeight = null;
-        }
-      });
-
-      // Toggle current item
-      if (isActive) {
-        item.classList.remove('active');
-        answer.style.maxHeight = null;
-      } else {
-        item.classList.add('active');
-        // Calculate dynamic height for transition
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      }
-    });
-  });
-}
-
-/**
- * 4. Hover to Play/Pause Showcase Videos
- */
-function initVideoHoverPlay() {
-  const videoCards = document.querySelectorAll('.work-card');
-  const heroVideo = document.querySelector('.hero-video-card video');
-  
-  // Setup showcase video hover and click fullscreen
-  videoCards.forEach(card => {
-    const video = card.querySelector('video');
-    if (!video) return;
-
-    // Cursor feedback for the entire card
-    card.style.cursor = 'pointer';
-
-    // Hover mouse over card -> Play video silently
-    card.addEventListener('mouseenter', () => {
-      video.muted = true;
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(e => console.log("Auto-play blocked: ", e));
-      }
-    });
-
-    // Hover mouse off card -> Pause video
-    card.addEventListener('mouseleave', () => {
-      video.pause();
-    });
-
-    // Click card -> Enter Fullscreen and Unmute (prevents overlay click blocking)
-    card.addEventListener('click', (e) => {
-      enterFullscreen(video);
-    });
-  });
-
-  // Setup hero video click fullscreen
-  const heroCard = document.querySelector('.hero-video-card');
-  if (heroCard && heroVideo) {
-    heroCard.style.cursor = 'pointer';
-    heroCard.addEventListener('click', (e) => {
-      enterFullscreen(heroVideo);
-    });
-  }
-
-  // Handle exiting fullscreen -> Mute the videos again
-  const handleFullscreenChange = () => {
-    const isFullscreen = document.fullscreenElement || 
-                         document.webkitFullscreenElement || 
-                         document.mozFullScreenElement || 
-                         document.msFullscreenElement;
-    if (!isFullscreen) {
-      const allVideos = document.querySelectorAll('video');
-      allVideos.forEach(vid => {
-        vid.muted = true;
-      });
-    }
-  };
-
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
-  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-  document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-  document.addEventListener('MSFullscreenChange', handleFullscreenChange);
-}
-
-function enterFullscreen(video) {
-  if (video.requestFullscreen) {
-    video.requestFullscreen();
-  } else if (video.webkitRequestFullscreen) { /* Safari */
-    video.webkitRequestFullscreen();
-  } else if (video.msRequestFullscreen) { /* IE11 */
-    video.msRequestFullscreen();
-  }
-  
-  // Unmute in fullscreen so they can hear the audio!
-  video.muted = false;
-  video.play();
-}
-
-/**
- * 5. Contact Form Validation and Success Animations
- */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const formContainer = document.getElementById('form-container');
-  const successContainer = document.getElementById('success-container');
-  const resetBtn = document.getElementById('reset-form-btn');
-
-  if (!form || !formContainer || !successContainer) return;
-
-  // Handle Form Submission
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Reset error visuals
-    const inputs = form.querySelectorAll('.form-input, .form-textarea');
-    let isValid = true;
-
-    inputs.forEach(input => {
-      if (!input.value.trim()) {
-        input.style.borderColor = 'var(--accent-red)';
-        isValid = false;
-      } else {
-        input.style.borderColor = 'var(--border-color)';
-      }
-    });
-
-    if (!isValid) return;
-
-    // Simulate form submission process (loading states)
-    const submitBtn = form.querySelector('.form-submit-btn');
-    const originalText = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting...';
-
-    setTimeout(() => {
-      // Transition to custom success view
-      formContainer.style.display = 'none';
-      successContainer.style.display = 'flex';
-      
-      // Reset button
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
-    }, 1000);
-  });
-
-  // Handle Reset Form button
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      form.reset();
-      const inputs = form.querySelectorAll('.form-input, .form-textarea');
-      inputs.forEach(input => input.style.borderColor = 'var(--border-color)');
-      successContainer.style.display = 'none';
-      formContainer.style.display = 'block';
-    });
-  }
-}
-
-
-/**
- * 6. Work Section Category Tab Filtering
- */
-function initWorkTabs() {
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const wTitle = document.querySelector('.widescreen-section-title');
-  const wContainer = document.getElementById('widescreen-container');
-  const vTitle = document.querySelector('.vertical-section-title');
-  const vContainer = document.getElementById('vertical-container');
-
-  if (tabBtns.length === 0) return;
-
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Set active button
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const tab = btn.getAttribute('data-tab');
-
-      // Pause all playing videos when tabs switch to prevent hidden media background audio/rendering
-      const allVideos = document.querySelectorAll('.work-video');
-      allVideos.forEach(vid => {
-        try {
-          vid.pause();
-        } catch (e) {
-          console.log("Error pausing video: ", e);
-        }
-      });
-
-      if (tab === 'all') {
-        if (wTitle) wTitle.classList.add('active');
-        if (wContainer) wContainer.classList.add('active');
-        if (vTitle) vTitle.classList.add('active');
-        if (vContainer) vContainer.classList.add('active');
-      } else if (tab === 'widescreen') {
-        if (wTitle) wTitle.classList.add('active');
-        if (wContainer) wContainer.classList.add('active');
-        if (vTitle) vTitle.classList.remove('active');
-        if (vContainer) vContainer.classList.remove('active');
-      } else if (tab === 'vertical') {
-        if (wTitle) wTitle.classList.remove('active');
-        if (wContainer) wContainer.classList.remove('active');
-        if (vTitle) vTitle.classList.add('active');
-        if (vContainer) vContainer.classList.add('active');
-      }
-    });
-  });
-}
-
-/**
- * 7. Infinite Reacts Counter (0 to 100.000+ loops)
- */
-function initReactionsCounter() {
-  const counterEl = document.getElementById('reactions-counter');
-  if (!counterEl) return;
-
-  const target = 100000;
-  const duration = 5000; // 5 seconds to count up (slower counting)
-  const holdTime = 3000; // 3 seconds delay before restarting
-
-  function formatCommaNumber(val) {
-    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-
-  let startTime = null;
-
-  function animate(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const elapsed = timestamp - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-
-    // Easing function for smoother finishing deceleration (easeOutQuad)
-    const easeOutQuad = progress * (2 - progress);
-    const currentVal = Math.floor(easeOutQuad * target);
-
-    if (progress < 1) {
-      counterEl.textContent = formatCommaNumber(currentVal);
-      requestAnimationFrame(animate);
-    } else {
-      counterEl.textContent = "100,000+";
-      setTimeout(() => {
-        startTime = null;
-        requestAnimationFrame(animate);
-      }, holdTime);
-    }
-  }
-
-  requestAnimationFrame(animate);
-}
-
-/**
- * 8. About Section Dashboard Tab Switching
- */
-function initAboutTabs() {
-  const tabs = document.querySelectorAll('.about-tab-btn');
-  const panels = document.querySelectorAll('.about-tab-content');
-  
-  if (tabs.length === 0) return;
-  
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const targetSuffix = tab.getAttribute('data-about-tab');
-      
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-      
-      tab.classList.add('active');
-      
-      const targetPanel = document.getElementById(`about-tab-${targetSuffix}`);
-      if (targetPanel) {
-        targetPanel.classList.add('active');
-      }
-    });
   });
 }
