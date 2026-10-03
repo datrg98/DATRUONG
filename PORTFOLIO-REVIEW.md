@@ -16,7 +16,9 @@
 
 ## Implemented direction
 
-- An editorial layout with charcoal backgrounds, warm white text, muted copper accents and a contrasting light biography section.
+- An editorial layout on a fixed deep-space backdrop: near-black base, 60 px grid, drifting indigo/cyan/pink light and fine grain, with indigo accents and glass panels throughout (the biography section is now dark to keep the backdrop continuous).
+- A 40-brand client logo wall (section 02): brand-colour marks (black artwork shown in white) in a hairline grid, sized by optical area, with a pointer spotlight and staggered entrance.
+- Editing-themed motion: a running 25 fps timecode with a playhead sweeping a ruler under the introduction, a viewfinder frame with a REC indicator on the portrait, and a pointer-lit grid.
 - A locally bundled Manrope variable font replaces the system sans/serif mixture. The name, section titles, project titles, body copy and metadata follow a consistent hierarchy in English and Vietnamese.
 - A concise identity-led introduction, larger work heading, aligned project captions, and consistent margins make the project library easier to scan. Contact pages use the same typography, a clear enquiry heading and visibly bounded fields.
 - Brand cards expand to one column on phones, social work retains a two-column 9:16 gallery, and filters use generous two-column touch targets. Shared spacing and responsive type rules replace the accumulated style overrides.

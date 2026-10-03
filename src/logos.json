@@ -1,0 +1,287 @@
+[
+ {
+  "slug": "adidas",
+  "name": "adidas",
+  "width": 223,
+  "height": 150,
+  "density": 0.381
+ },
+ {
+  "slug": "nivea",
+  "name": "NIVEA",
+  "width": 150,
+  "height": 150,
+  "density": 0.785
+ },
+ {
+  "slug": "pg",
+  "name": "P&G",
+  "width": 345,
+  "height": 150,
+  "density": 0.455
+ },
+ {
+  "slug": "unilever",
+  "name": "Unilever",
+  "width": 137,
+  "height": 150,
+  "density": 0.31
+ },
+ {
+  "slug": "lg",
+  "name": "LG",
+  "width": 340,
+  "height": 150,
+  "density": 0.503
+ },
+ {
+  "slug": "puma",
+  "name": "PUMA",
+  "width": 302,
+  "height": 150,
+  "density": 0.383
+ },
+ {
+  "slug": "converse",
+  "name": "Converse",
+  "width": 223,
+  "height": 150,
+  "density": 0.257
+ },
+ {
+  "slug": "gillette",
+  "name": "Gillette",
+  "width": 360,
+  "height": 89,
+  "density": 0.663
+ },
+ {
+  "slug": "olay",
+  "name": "Olay",
+  "width": 360,
+  "height": 109,
+  "density": 0.271
+ },
+ {
+  "slug": "oral-b",
+  "name": "Oral-B",
+  "width": 360,
+  "height": 126,
+  "density": 0.927
+ },
+ {
+  "slug": "logitech",
+  "name": "Logitech",
+  "width": 360,
+  "height": 110,
+  "density": 0.333
+ },
+ {
+  "slug": "kenvue",
+  "name": "Kenvue",
+  "width": 360,
+  "height": 84,
+  "density": 0.357
+ },
+ {
+  "slug": "rohto",
+  "name": "Rohto",
+  "width": 360,
+  "height": 132,
+  "density": 0.358
+ },
+ {
+  "slug": "obagi",
+  "name": "Obagi Medical",
+  "width": 352,
+  "height": 150,
+  "density": 0.241
+ },
+ {
+  "slug": "cerave",
+  "name": "CeraVe",
+  "width": 360,
+  "height": 125,
+  "density": 1.0,
+  "scale": 1.15
+ },
+ {
+  "slug": "the-body-shop",
+  "name": "The Body Shop",
+  "width": 300,
+  "height": 150,
+  "density": 0.136
+ },
+ {
+  "slug": "innisfree",
+  "name": "innisfree",
+  "width": 360,
+  "height": 47,
+  "density": 0.481
+ },
+ {
+  "slug": "dermalogica",
+  "name": "Dermalogica",
+  "width": 360,
+  "height": 38,
+  "density": 0.483
+ },
+ {
+  "slug": "sensodyne",
+  "name": "Sensodyne",
+  "width": 360,
+  "height": 99,
+  "density": 0.164
+ },
+ {
+  "slug": "vaseline",
+  "name": "Vaseline",
+  "width": 221,
+  "height": 150,
+  "density": 0.829
+ },
+ {
+  "slug": "swisse",
+  "name": "Swisse",
+  "width": 360,
+  "height": 132,
+  "density": 1.0,
+  "scale": 1.25
+ },
+ {
+  "slug": "blackmores",
+  "name": "Blackmores",
+  "width": 360,
+  "height": 39,
+  "density": 0.414
+ },
+ {
+  "slug": "aptamil",
+  "name": "Aptamil",
+  "width": 196,
+  "height": 150,
+  "density": 0.573,
+  "scale": 1.35
+ },
+ {
+  "slug": "suntory-pepsico",
+  "name": "Suntory PepsiCo",
+  "width": 349,
+  "height": 150,
+  "density": 0.31
+ },
+ {
+  "slug": "unicharm",
+  "name": "Unicharm",
+  "width": 360,
+  "height": 110,
+  "density": 0.403
+ },
+ {
+  "slug": "venus",
+  "name": "Gillette Venus",
+  "width": 360,
+  "height": 125,
+  "density": 0.289
+ },
+ {
+  "slug": "st-ives",
+  "name": "St. Ives",
+  "width": 302,
+  "height": 150,
+  "density": 0.229
+ },
+ {
+  "slug": "betadine",
+  "name": "Betadine",
+  "width": 360,
+  "height": 90,
+  "density": 0.972,
+  "scale": 1.15
+ },
+ {
+  "slug": "yaman",
+  "name": "YA-MAN",
+  "width": 360,
+  "height": 90,
+  "density": 0.241
+ },
+ {
+  "slug": "coolmate",
+  "name": "Coolmate",
+  "width": 251,
+  "height": 150,
+  "density": 0.213
+ },
+ {
+  "slug": "romano",
+  "name": "Romano",
+  "width": 264,
+  "height": 150,
+  "density": 0.23
+ },
+ {
+  "slug": "wipro",
+  "name": "Wipro",
+  "width": 190,
+  "height": 150,
+  "density": 0.196
+ },
+ {
+  "slug": "vitadairy",
+  "name": "VitaDairy",
+  "width": 360,
+  "height": 127,
+  "density": 0.299
+ },
+ {
+  "slug": "belcube",
+  "name": "Belcube",
+  "width": 137,
+  "height": 150,
+  "density": 0.528,
+  "scale": 1.35
+ },
+ {
+  "slug": "colosbaby",
+  "name": "ColosBaby",
+  "width": 360,
+  "height": 74,
+  "density": 0.377
+ },
+ {
+  "slug": "fatzbaby",
+  "name": "Fatzbaby",
+  "width": 150,
+  "height": 150,
+  "density": 0.79
+ },
+ {
+  "slug": "ajmal",
+  "name": "Ajmal",
+  "width": 104,
+  "height": 150,
+  "density": 0.769
+ },
+ {
+  "slug": "noreva",
+  "name": "Noreva",
+  "width": 360,
+  "height": 95,
+  "density": 0.331
+ },
+ {
+  "slug": "acne-aid",
+  "name": "Acne-Aid",
+  "width": 223,
+  "height": 150,
+  "density": 0.398
+ },
+ {
+  "slug": "aqua",
+  "name": "AQUA",
+  "width": 360,
+  "height": 91,
+  "density": 0.438
+ }
+]

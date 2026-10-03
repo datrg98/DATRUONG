@@ -76,7 +76,7 @@ if (stats && counters.length) {
 const revealSelector = [
   '.hero-kicker', '.hero-heading', '.hero-aside', '.work-toolbar',
   '.feature-label', '.feature-art', '.feature-caption', '.group-heading',
-  '.project-card', '.brand-strip > .eyebrow', '.brand-strip > div',
+  '.project-card', '.clients-head', '.logo-wall li', '.hero-timeline',
   '.about-visual', '.about-content > .eyebrow', '.about-content > h2',
   '.about-content > p', '.about-content > .text-link',
   '.career-grid > div:first-child', '.career', '.toolkit > div',
@@ -89,6 +89,8 @@ let revealObserver;
 function revealDelay(element) {
   if (element.matches('.hero-heading')) return 70;
   if (element.matches('.hero-aside')) return 160;
+  if (element.matches('.hero-timeline')) return 260;
+  if (element.matches('.logo-wall li')) return ([...element.parentElement.children].indexOf(element) % 8) * 35;
   if (element.matches('.project-card, .service-row, .career, .process > div, .faq')) {
     const index = [...element.parentElement.children].indexOf(element);
     return (index % 4) * 45;
@@ -143,8 +145,86 @@ addEventListener('resize', scheduleScroll, { passive: true });
 if ('ResizeObserver' in window) new ResizeObserver(scheduleScroll).observe(document.body);
 scheduleScroll();
 
+// Edit timeline: the playhead sweeps a 10-second ruler while the timecode counts at 25 fps.
+// Both read one clock, and both stop while the introduction is off screen.
+const timecode = document.querySelector('[data-timecode]');
+const playhead = document.querySelector('.playhead');
+let playheadAnimation;
+let timecodeFrame = 0;
+let lastFrame = -1;
+const pad = value => String(value).padStart(2, '0');
+
+function renderTimecode() {
+  const frames = Math.floor((playheadAnimation?.currentTime ?? 0) / 40);
+  if (frames !== lastFrame) {
+    lastFrame = frames;
+    timecode.textContent = `${pad(Math.floor(frames / 90000))}:${pad(Math.floor(frames / 1500) % 60)}:${pad(Math.floor(frames / 25) % 60)}:${pad(frames % 25)}`;
+  }
+  timecodeFrame = requestAnimationFrame(renderTimecode);
+}
+function startTimeline() {
+  if (reducedMotion.matches || !playhead.animate) return;
+  playheadAnimation ??= playhead.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(100%)' }], { duration: 10000, iterations: Infinity });
+  playheadAnimation.play();
+  if (!timecodeFrame) timecodeFrame = requestAnimationFrame(renderTimecode);
+}
+function stopTimeline() {
+  playheadAnimation?.pause();
+  cancelAnimationFrame(timecodeFrame);
+  timecodeFrame = 0;
+}
+const hero = document.querySelector('.hero');
+if (hero && timecode && playhead && 'IntersectionObserver' in window) {
+  new IntersectionObserver(([entry]) => (entry.isIntersecting ? startTimeline() : stopTimeline())).observe(hero);
+}
+
+// Pointer light: brightens the backdrop grid near the cursor and spotlights the logo wall.
+const backdrop = document.querySelector('.backdrop');
+const logoWall = document.querySelector('.logo-wall');
+const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+let pointer = null;
+let pointerFrame = 0;
+
+function paintPointer() {
+  pointerFrame = 0;
+  if (!pointer) return;
+  backdrop.style.setProperty('--mx', `${pointer.x}px`);
+  backdrop.style.setProperty('--my', `${pointer.y}px`);
+  if (!logoWall) return;
+  const box = logoWall.getBoundingClientRect();
+  const inside = pointer.x >= box.left && pointer.x <= box.right && pointer.y >= box.top && pointer.y <= box.bottom;
+  logoWall.classList.toggle('is-lit', inside);
+  if (inside) {
+    logoWall.style.setProperty('--x', `${pointer.x - box.left}px`);
+    logoWall.style.setProperty('--y', `${pointer.y - box.top}px`);
+  }
+}
+function schedulePointer() {
+  if (pointer && !pointerFrame) pointerFrame = requestAnimationFrame(paintPointer);
+}
+function clearPointer() {
+  pointer = null;
+  backdrop?.classList.remove('is-lit');
+  logoWall?.classList.remove('is-lit');
+}
+if (backdrop) {
+  addEventListener('pointermove', event => {
+    if (event.pointerType !== 'mouse' || reducedMotion.matches || !finePointer.matches) return;
+    pointer = { x: event.clientX, y: event.clientY };
+    backdrop.classList.add('is-lit');
+    schedulePointer();
+  }, { passive: true });
+  // The wall moves under a resting cursor while scrolling.
+  addEventListener('scroll', schedulePointer, { passive: true });
+  document.documentElement.addEventListener('pointerleave', clearPointer);
+}
+
 reducedMotion.addEventListener('change', event => {
   if (event.matches) {
+    stopTimeline();
+    playheadAnimation?.cancel();
+    playheadAnimation = undefined;
+    clearPointer();
     revealObserver?.disconnect();
     for (const animation of runningAnimations) animation.cancel();
     if (counters.length) finishCounters();
