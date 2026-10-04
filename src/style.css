@@ -131,13 +131,18 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
 .hero-aside { max-width: 320px; justify-self: end; padding-bottom: 6px; }
 .hero-aside p { font-size: 15px; line-height: 1.85; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; gap: 30px; padding: 14px 20px; font-size: 13px; font-weight: 600; line-height: 1.5; }
-.hero-button { width: 100%; margin-top: 25px; justify-content: space-between; color: var(--ink); background: rgba(108, 99, 255, .16); border: 1px solid rgba(143, 136, 255, .5); }
+.hero-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
+.hero-button { width: 100%; margin-top: 0; justify-content: space-between; color: var(--ink); background: rgba(108, 99, 255, .16); border: 1px solid rgba(143, 136, 255, .5); }
 .hero-button span { font-size: 21px; line-height: 1; }
 .hero-button:hover { background: rgba(108, 99, 255, .28); border-color: var(--accent); box-shadow: 0 0 32px var(--glow), inset 0 0 18px rgba(143, 136, 255, .18); }
+.hero-cv-button { width: 100%; justify-content: space-between; color: var(--ink); }
+.hero-cv-button svg { width: 16px; height: 16px; }
 .button-outline { border: 1px solid var(--line-strong); background: rgba(4, 6, 12, .3); }
 .button-outline:hover { border-color: var(--accent); background: rgba(108, 99, 255, .14); box-shadow: 0 0 28px var(--glow); }
 .button-orange { background: var(--accent); color: #05060d; }
 .button-orange:hover { background: #a9a3ff; box-shadow: 0 0 32px var(--glow); }
+.about-links { display: flex; flex-wrap: wrap; gap: 28px; align-items: center; margin-top: 14px; }
+.contact-cv { margin-top: 20px; align-self: start; }
 .text-link { display: inline-flex; align-items: center; gap: 24px; padding: 0 0 7px; border: 0; border-bottom: 1px solid var(--line-strong); background: none; font-size: 13px; font-weight: 600; }
 .text-link svg { width: 17px; height: 17px; }
 .text-link:hover { color: var(--accent); border-color: var(--accent); }
@@ -385,8 +390,8 @@ summary::-webkit-details-marker { display: none; }
 .mobile-menu:not([hidden]), #email-ready:not([hidden]), .faq[open] > p, .career[open] > p, .credentials details[open] > ul { animation: detail-enter 240ms ease-out; }
 
 @media (max-width: 1100px) {
-  .desktop-nav { margin-left: 0; gap: 24px; }
-  .nav-right { gap: 22px; }
+  .desktop-nav { margin-left: 0; gap: 20px; }
+  .nav-right { gap: 20px; }
   .hero-grid { gap: 40px; }
   .hero h1 { font-size: clamp(58px, 7.5vw, 84px); }
   .hero-specialty { font-size: 26px; }
@@ -403,6 +408,7 @@ summary::-webkit-details-marker { display: none; }
   .footer { flex-wrap: wrap; }
 }
 @media (max-width: 900px) {
+  .desktop-nav { gap: 14px; font-size: 12px; }
   .hero h1 { font-size: 7.3vw; }
   .hero-grid { grid-template-columns: 1.45fr 1fr; gap: 34px; }
   .hero-specialty { font-size: 23px; }
@@ -445,7 +451,8 @@ summary::-webkit-details-marker { display: none; }
   .hero-specialty { margin-top: 14px; font-size: clamp(22px, 4vw, 29px); line-height: 1.45; }
   .hero-aside { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 26px; max-width: none; justify-self: stretch; padding: 0; }
   .hero-aside p { max-width: 380px; font-size: 14px; }
-  .hero-button { width: auto; margin-top: 0; font-size: 12px; gap: 22px; }
+  .hero-actions { margin-top: 0; gap: 10px; }
+  .hero-button, .hero-cv-button { width: 100%; min-width: 160px; margin-top: 0; font-size: 12px; gap: 18px; min-height: 44px; padding: 11px 16px; }
   .work-toolbar { padding-top: 24px; margin-bottom: 27px; gap: 22px; }
   .work-heading h2 { font-size: 30px; }
   .filters { gap: 4px; }
@@ -527,7 +534,8 @@ summary::-webkit-details-marker { display: none; }
   .hero-specialty { font-size: 22px; }
   .hero-aside { display: block; }
   .hero-aside p { max-width: 340px; }
-  .hero-button { margin-top: 22px; min-width: 200px; justify-content: space-between; }
+  .hero-actions { margin-top: 22px; width: 100%; }
+  .hero-button, .hero-cv-button { min-width: 0; width: 100%; justify-content: space-between; }
   .work-heading h2 { font-size: 28px; }
   .filters { display: grid; width: 100%; grid-template-columns: 1fr 1fr; gap: 4px 8px; }
   .filter { justify-content: space-between; padding-inline: 12px; border-bottom-color: var(--line); font-size: 12px; }
