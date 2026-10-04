@@ -8,7 +8,8 @@
     "build": "node scripts/render-pages.mjs && vite build",
     "preview": "vite preview",
     "render": "node scripts/render-pages.mjs",
-    "cv": "node scripts/build-resume-pdf.mjs"
+    "resume": "node scripts/build-resume-pdf.mjs",
+    "patch-cv": "node scripts/patch-cv-name.mjs"
   },
   "devDependencies": {
     "vite": "^8.0.12"

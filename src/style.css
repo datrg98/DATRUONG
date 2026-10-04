@@ -91,7 +91,7 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
 .wordmark { font-size: 19px; letter-spacing: -.055em; font-weight: 800; white-space: nowrap; }
 .wordmark-slash { color: var(--accent); font-weight: 400; margin-inline: 4px; }
 .desktop-nav { display: flex; gap: 36px; margin-left: 56px; font-size: 13px; font-weight: 500; }
-.desktop-nav a { position: relative; padding-block: 12px; color: #c3c7d6; }
+.desktop-nav a { position: relative; padding-block: 12px; color: #c3c7d6; white-space: nowrap; }
 .desktop-nav a::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 280ms var(--ease); }
 .desktop-nav a:hover::after, .desktop-nav a:focus-visible::after { transform: scaleX(1); }
 .desktop-nav a:hover { color: var(--ink); }
