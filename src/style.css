@@ -131,7 +131,7 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(80px, 11vw, 180px);
+  gap: clamp(16px, 2.2vw, 32px);
   margin: 0;
   padding: 0;
   margin-bottom: clamp(14px, 2.5vw, 40px);
@@ -260,26 +260,34 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
   animation: rec-blink 1.6s steps(1) infinite;
 }
 
-/* Layer 3: Creative Styled Text OVER Avatar */
+/* Layer 3: Creative Styled Text OVER Avatar (masked exclusively to avatar silhouette) */
 .hero-title-front {
   z-index: 3;
   pointer-events: none;
+  -webkit-mask-image: url('/dat-truong-avatar.webp');
+  -webkit-mask-size: clamp(180px, 23vw, 340px) clamp(230px, 29vw, 430px);
+  -webkit-mask-position: center bottom;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url('/dat-truong-avatar.webp');
+  mask-size: clamp(180px, 23vw, 340px) clamp(230px, 29vw, 430px);
+  mask-position: center bottom;
+  mask-repeat: no-repeat;
 }
 .hero-title-front .hero-name-word {
   color: transparent !important;
   -webkit-text-fill-color: transparent !important;
-  -webkit-text-stroke: 1.6px #ffffff;
+  -webkit-text-stroke: 1.1px rgba(69, 208, 245, 0.95);
   background: none !important;
   -webkit-background-clip: initial !important;
   background-clip: initial !important;
-  filter: drop-shadow(0 0 2px rgba(4, 6, 12, 0.95)) drop-shadow(0 4px 14px rgba(69, 208, 245, 0.55)) drop-shadow(0 0 28px rgba(108, 99, 255, 0.4));
+  filter: drop-shadow(0 0 10px rgba(69, 208, 245, 0.75)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
 }
 .hero-title-front .hero-name-word .orange {
   display: inline-block;
   -webkit-text-stroke: 0;
   color: var(--accent-2) !important;
   -webkit-text-fill-color: var(--accent-2) !important;
-  text-shadow: 0 0 18px rgba(69, 208, 245, 0.95);
+  text-shadow: 0 0 16px rgba(69, 208, 245, 0.95);
   margin-left: 2px;
 }
 
@@ -767,7 +775,7 @@ summary::-webkit-details-marker { display: none; }
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    gap: clamp(50px, 10vw, 110px);
+    gap: clamp(10px, 2vw, 18px);
     margin: 0;
     padding: 0;
     margin-bottom: clamp(10px, 2vw, 22px);
@@ -781,8 +789,12 @@ summary::-webkit-details-marker { display: none; }
     letter-spacing: -.04em;
     flex-shrink: 0;
   }
+  .hero-title-front {
+    -webkit-mask-size: clamp(110px, 24vw, 160px) clamp(140px, 30vw, 200px);
+    mask-size: clamp(110px, 24vw, 160px) clamp(140px, 30vw, 200px);
+  }
   .hero-title-front .hero-name-word {
-    -webkit-text-stroke: 1.2px rgba(244, 245, 255, 0.88);
+    -webkit-text-stroke: 0.9px rgba(69, 208, 245, 0.95);
   }
   .hero-avatar-frame {
     grid-area: 1 / 1;
@@ -909,7 +921,7 @@ summary::-webkit-details-marker { display: none; }
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    gap: clamp(38px, 9.5vw, 72px);
+    gap: clamp(8px, 1.8vw, 14px);
     margin: 0;
     margin-bottom: 6px;
     width: 100%;
@@ -925,7 +937,11 @@ summary::-webkit-details-marker { display: none; }
   .hero-avatar-badge { font-size: 7px; padding: 2px 6px; bottom: 2px; gap: 4px; }
   .hero-name-last { font-size: clamp(21px, 6vw, 30px); }
   .hero-name-word { padding-block: 2px 6px; white-space: nowrap; flex-shrink: 0; }
-  .hero-title-front .hero-name-word { -webkit-text-stroke: 1px rgba(244, 245, 255, 0.88); }
+  .hero-title-front {
+    -webkit-mask-size: clamp(92px, 24vw, 122px) clamp(118px, 31vw, 156px);
+    mask-size: clamp(92px, 24vw, 122px) clamp(118px, 31vw, 156px);
+  }
+  .hero-title-front .hero-name-word { -webkit-text-stroke: 0.85px rgba(69, 208, 245, 0.95); }
   .hero-specialty { font-size: 21px; }
   .hero-aside { display: flex; flex-direction: column; gap: 14px; width: 100%; }
   .hero-aside p { max-width: 100%; font-size: 13.5px; line-height: 1.65; }
