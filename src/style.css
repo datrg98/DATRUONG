@@ -115,24 +115,48 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
 .hero-kicker { display: flex; justify-content: space-between; align-items: center; gap: 24px; color: var(--muted); }
 .hero-kicker .eyebrow { font-size: 10px; }
 
-.hero-stage { position: relative; margin-top: 24px; margin-bottom: 20px; width: 100%; }
+.hero-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  align-items: end;
+  margin-top: clamp(20px, 3.5vw, 44px);
+  margin-bottom: clamp(24px, 3.5vw, 40px);
+  width: 100%;
+  min-height: clamp(240px, 28vw, 420px);
+}
+
 .hero-title-stage {
+  grid-area: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(12px, 3.2vw, 44px);
+  gap: clamp(80px, 11vw, 180px);
   margin: 0;
   padding: 0;
+  margin-bottom: clamp(14px, 2.5vw, 40px);
   text-align: center;
   width: 100%;
+  user-select: none;
 }
+
 .hero-name-word {
   display: inline-block;
-  font-size: clamp(48px, 8.4vw, 122px);
-  font-weight: 600;
-  line-height: 1.15;
+  font-size: clamp(48px, 8.4vw, 124px);
+  font-weight: 700;
+  line-height: 1.1;
   letter-spacing: -.05em;
   white-space: nowrap;
+  padding-block: 6px 12px;
+  padding-right: 4px;
+  overflow: visible;
+}
+
+/* Layer 1: Solid & Gradient Filled Text BEHIND Avatar */
+.hero-title-back {
+  z-index: 1;
+}
+.hero-title-back .hero-name-word {
   background: linear-gradient(100deg, #f4f5ff 0%, #d6d3ff 30%, #8f88ff 62%, #45d0f5 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
@@ -140,12 +164,8 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
   color: transparent;
   -webkit-text-fill-color: transparent;
   animation: name-sheen 16s ease-in-out infinite alternate;
-  padding-block: 4px 10px;
-  padding-right: 4px;
-  margin-block: -4px -10px;
-  overflow: visible;
 }
-.hero-name-word .orange {
+.hero-title-back .hero-name-word .orange {
   display: inline-block;
   color: var(--accent-2);
   -webkit-text-fill-color: var(--accent-2);
@@ -157,22 +177,25 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
 }
 @keyframes name-sheen { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
 
+/* Layer 2: Middle Cutout Avatar overlapping the typography */
 .hero-avatar-frame {
+  grid-area: 1 / 1;
+  align-self: end;
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  width: clamp(140px, 18vw, 270px);
-  height: clamp(170px, 22vw, 320px);
+  width: clamp(180px, 23vw, 340px);
+  height: clamp(230px, 29vw, 430px);
   flex-shrink: 0;
   z-index: 2;
 }
 .hero-avatar-ambient {
   position: absolute;
-  inset: -15% -25% -5% -25%;
+  inset: -18% -24% -5% -24%;
   z-index: 1;
   background: radial-gradient(circle at 50% 60%, rgba(108, 99, 255, 0.45) 0%, rgba(69, 208, 245, 0.2) 45%, transparent 75%);
-  filter: blur(24px);
+  filter: blur(28px);
   pointer-events: none;
   animation: ambient-pulse 6s ease-in-out infinite alternate;
 }
@@ -182,13 +205,13 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
 }
 .hero-avatar-spot {
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 130%;
-  height: 28px;
+  width: 140%;
+  height: 32px;
   background: radial-gradient(ellipse at 50% 50%, rgba(69, 208, 245, 0.4) 0%, rgba(108, 99, 255, 0.2) 50%, transparent 80%);
-  filter: blur(8px);
+  filter: blur(10px);
   pointer-events: none;
   z-index: 1;
 }
@@ -235,6 +258,29 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
   background: #ff3d5e;
   box-shadow: 0 0 8px #ff3d5e;
   animation: rec-blink 1.6s steps(1) infinite;
+}
+
+/* Layer 3: Creative Styled Text OVER Avatar */
+.hero-title-front {
+  z-index: 3;
+  pointer-events: none;
+}
+.hero-title-front .hero-name-word {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-text-stroke: 1.6px #ffffff;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  filter: drop-shadow(0 0 2px rgba(4, 6, 12, 0.95)) drop-shadow(0 4px 14px rgba(69, 208, 245, 0.55)) drop-shadow(0 0 28px rgba(108, 99, 255, 0.4));
+}
+.hero-title-front .hero-name-word .orange {
+  display: inline-block;
+  -webkit-text-stroke: 0;
+  color: var(--accent-2) !important;
+  -webkit-text-fill-color: var(--accent-2) !important;
+  text-shadow: 0 0 18px rgba(69, 208, 245, 0.95);
+  margin-left: 2px;
 }
 
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: start; gap: 48px; margin-top: 16px; }
@@ -704,29 +750,48 @@ summary::-webkit-details-marker { display: none; }
   .hero { padding-top: 32px; padding-bottom: 40px; }
   .hero-kicker > .availability { display: none; }
   .hero-kicker .eyebrow { font-size: 9px; }
-  .hero-stage { margin-top: 18px; margin-bottom: 16px; width: 100%; max-width: 100%; overflow: visible; display: flex; justify-content: center; }
+  .hero-stage {
+    display: grid;
+    place-items: center;
+    align-items: end;
+    min-height: clamp(170px, 32vw, 240px);
+    margin-top: 18px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+  }
   .hero-title-stage {
+    grid-area: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    gap: clamp(6px, 1.8vw, 16px);
+    gap: clamp(50px, 10vw, 110px);
+    margin: 0;
+    padding: 0;
+    margin-bottom: clamp(10px, 2vw, 22px);
     width: 100%;
     max-width: 100%;
     overflow: visible;
   }
   .hero-name-word {
-    font-size: clamp(21px, 5.6vw, 38px);
+    font-size: clamp(23px, 6.2vw, 42px);
     white-space: nowrap;
     letter-spacing: -.04em;
     flex-shrink: 0;
   }
+  .hero-title-front .hero-name-word {
+    -webkit-text-stroke: 1.2px rgba(244, 245, 255, 0.88);
+  }
   .hero-avatar-frame {
-    width: clamp(74px, 19vw, 114px);
-    height: clamp(95px, 24vw, 145px);
+    grid-area: 1 / 1;
+    align-self: end;
+    width: clamp(110px, 24vw, 160px);
+    height: clamp(140px, 30vw, 200px);
     flex-shrink: 0;
   }
-  .hero-avatar-badge { font-size: 7px; padding: 2px 6.5px; bottom: 3px; gap: 4px; }
+  .hero-avatar-badge { font-size: 7.5px; padding: 2px 6.5px; bottom: 3px; gap: 4px; }
   .hero-grid { grid-template-columns: 1fr; gap: 18px; margin-top: 18px; width: 100%; max-width: 100%; }
   .hero-specialty { margin-top: 0; font-size: clamp(20px, 3.8vw, 27px); line-height: 1.45; }
   .hero-aside {
@@ -830,22 +895,37 @@ summary::-webkit-details-marker { display: none; }
   .nav-right { gap: 12px; }
   .wordmark { font-size: 16px; }
   .languages { gap: 7px; }
+  .hero-stage {
+    display: grid;
+    place-items: center;
+    align-items: end;
+    min-height: clamp(140px, 34vw, 195px);
+    margin-top: 14px;
+    margin-bottom: 16px;
+  }
   .hero-title-stage {
+    grid-area: 1 / 1;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    gap: clamp(6px, 1.8vw, 12px);
-    margin-top: 14px;
-    margin-bottom: 16px;
+    gap: clamp(38px, 9.5vw, 72px);
+    margin: 0;
+    margin-bottom: 6px;
     width: 100%;
     max-width: 100%;
   }
-  .hero-name-first { font-size: clamp(23px, 6.6vw, 34px); }
-  .hero-avatar-frame { width: clamp(74px, 21vw, 98px); height: clamp(96px, 27vw, 126px); }
+  .hero-name-first { font-size: clamp(21px, 6vw, 30px); }
+  .hero-avatar-frame {
+    grid-area: 1 / 1;
+    align-self: end;
+    width: clamp(92px, 24vw, 122px);
+    height: clamp(118px, 31vw, 156px);
+  }
   .hero-avatar-badge { font-size: 7px; padding: 2px 6px; bottom: 2px; gap: 4px; }
-  .hero-name-last { font-size: clamp(23px, 6.6vw, 34px); }
+  .hero-name-last { font-size: clamp(21px, 6vw, 30px); }
   .hero-name-word { padding-block: 2px 6px; white-space: nowrap; flex-shrink: 0; }
+  .hero-title-front .hero-name-word { -webkit-text-stroke: 1px rgba(244, 245, 255, 0.88); }
   .hero-specialty { font-size: 21px; }
   .hero-aside { display: flex; flex-direction: column; gap: 14px; width: 100%; }
   .hero-aside p { max-width: 100%; font-size: 13.5px; line-height: 1.65; }
