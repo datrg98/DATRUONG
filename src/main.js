@@ -138,3 +138,22 @@ if (form) {
     }
   });
 }
+
+const zaloModal = document.querySelector('#zalo-modal');
+if (zaloModal) {
+  const openTriggers = document.querySelectorAll('[data-open-zalo-qr], #open-zalo-qr-btn, .contact-zalo-qr-trigger');
+  const closeBtn = document.querySelector('#close-zalo-modal');
+  openTriggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      zaloModal.showModal();
+    });
+  });
+  closeBtn?.addEventListener('click', () => zaloModal.close());
+  zaloModal.addEventListener('click', event => {
+    const bounds = zaloModal.getBoundingClientRect();
+    if (event.target === zaloModal && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) {
+      zaloModal.close();
+    }
+  });
+}
