@@ -23,11 +23,103 @@ export const projects = [
 ];
 
 export const experience = [
-  ['ONPOINT', '03.2026 — Present', '03.2026 — Hiện tại', 'Senior Video Editor', 'Senior Video Editor', 'Leading post-production, mentoring editors and refining pacing through audience retention data.', 'Dẫn dắt đội ngũ hậu kỳ, đào tạo biên tập viên và tối ưu nhịp dựng dựa trên dữ liệu giữ chân người xem.'],
-  ['ONPOINT', '10.2024 — 03.2026', '10.2024 — 03.2026', 'Video Editor', 'Video Editor', 'Commercial production for Rohto, Nivea, Romano and UI MASS. Integrated Runway, Kling and Vbee into production workflows.', 'Sản xuất nội dung thương mại cho Rohto, Nivea, Romano và UI MASS. Kết hợp Runway, Kling và Vbee vào quy trình sản xuất.'],
-  ['NEW ERA MEDIA', '12.2023 — 10.2024', '12.2023 — 10.2024', 'Videographer & Editor', 'Quay phim & Dựng phim', 'Product reviews, corporate content and live promotional events, from multi-camera filming to the final edit.', 'Sản xuất video đánh giá sản phẩm, nội dung doanh nghiệp và sự kiện, từ quay đa máy đến hoàn thiện hậu kỳ.'],
-  ['WONDERJOY STUDIO', '12.2023 — 10.2024', '12.2023 — 10.2024', 'Photographer & Retoucher', 'Nhiếp ảnh & Retouch', 'Commercial studio photography, lighting design and detailed skin and product retouching.', 'Chụp ảnh studio thương mại, thiết kế ánh sáng và xử lý chi tiết da, sản phẩm.'],
-  ['GREEN ACADEMY', '08.2023 — 12.2023', '08.2023 — 12.2023', 'Media Staff · Part-time', 'Nhân viên Media · Bán thời gian', 'Filmed and edited interviews and promotional content; designed catalogs and marketing collateral.', 'Quay dựng phỏng vấn, video quảng bá; thiết kế catalogue và ấn phẩm truyền thông.'],
+  {
+    company: 'ONPOINT',
+    date: '03.2026 — Present',
+    dateVi: '03.2026 — Hiện tại',
+    role: 'Senior Video Editor',
+    roleVi: 'Senior Video Editor',
+    lead: 'Leading post-production operations and creative direction, managing video editing teams and standardizing delivery for enterprise brand campaigns.',
+    leadVi: 'Dẫn dắt hoạt động hậu kỳ và định hướng sáng tạo, quản lý đội ngũ dựng phim và chuẩn hóa quy trình bàn giao cho các chiến dịch thương hiệu lớn.',
+    bullets: [
+      ['Team Leadership & QC', 'Oversee and mentor the post-production video editing unit, standardizing daily operational workflows and implementing strict quality control frameworks to guarantee consistent visual excellence.'],
+      ['Brand Strategy & Consultation', 'Act as the primary technical and creative consultant in direct meetings with brand partners, aligning visual pacing, color grading, tone, and sound design with brand identity.'],
+      ['Data-Driven Retention Optimization', 'Continuously analyze video performance metrics and audience retention drop-off curves to iteratively refine opening hooks, narrative transitions, and pacing for maximum watch-time.'],
+      ['Production Pipeline Innovation', 'Architect advanced post-production pipelines and technical problem-solving workflows, accelerating turnaround times while maintaining cinema-grade fidelity.']
+    ],
+    bulletsVi: [
+      ['Lãnh đạo đội ngũ & Kiểm soát chất lượng (QC)', 'Quản lý và đào tạo đội ngũ video editor, chuẩn hóa quy trình làm việc hàng ngày và thiết lập khung kiểm soát chất lượng nghiêm ngặt nhằm đảm bảo tính nhất quán trên từng sản phẩm.'],
+      ['Tư vấn chiến lược thương hiệu', 'Đóng vai trò cố vấn kỹ thuật và sáng tạo trong các buổi làm việc trực tiếp với khách hàng doanh nghiệp, đồng bộ nhịp điệu hình ảnh, chỉnh màu, tone & mood và thiết kế âm thanh theo nhận diện thương hiệu.'],
+      ['Tối ưu giữ chân người xem dựa trên dữ liệu', 'Liên tục phân tích chỉ số hiệu suất video và biểu đồ giữ chân khán giả để hoàn thiện cấu trúc hook mở đầu, chuyển cảnh mượt mà và nhịp dựng tối ưu thời lượng xem.'],
+      ['Cải tiến quy trình sản xuất', 'Xây dựng giải pháp kỹ thuật và quy trình hậu kỳ tiên tiến, rút ngắn thời gian bàn giao dự án mà vẫn duy trì chất lượng hình ảnh tiêu chuẩn cao.']
+    ]
+  },
+  {
+    company: 'ONPOINT',
+    date: '10.2024 — 03.2026',
+    dateVi: '10.2024 — 03.2026',
+    role: 'Video Editor',
+    roleVi: 'Video Editor',
+    lead: 'Executed end-to-end commercial editing, kinetic motion graphics, and generative AI workflows across top tier-one brand accounts.',
+    leadVi: 'Thực hiện toàn diện quy trình dựng phim thương mại, đồ họa chuyển động và ứng dụng AI tạo sinh cho các thương hiệu hàng đầu.',
+    bullets: [
+      ['Commercial & Campaign Production', 'Spearheaded comprehensive end-to-end video editing and visual narratives for tier-one brand portfolios including Rohto, Nivea, Romano, and UI MASS across major digital platforms.'],
+      ['High-Conversion Motion & Mega Days', 'Produced dynamic motion graphics, visual effects, and kinetic typography tailored for high-stakes e-commerce milestones, Mega Day sales, and Brand Day launches.'],
+      ['Generative AI Integration', 'Pioneered the operational adoption of generative AI content suites (Runway, Kling, Vbee, Midjourney) into commercial timelines, delivering unique cinematic sequences with high speed and budget efficiency.'],
+      ['Pitch Showreels & Business Growth', 'Crafted high-concept promotional sizzle reels and corporate pitch videos that successfully helped secure major brand accounts and campaign contracts.']
+    ],
+    bulletsVi: [
+      ['Sản xuất phim thương mại & chiến dịch', 'Phụ trách chính khâu dựng phim và kể chuyện bằng hình ảnh cho các thương hiệu hàng đầu như Rohto, Nivea, Romano và UI MASS trên các nền tảng số.'],
+      ['Motion chuyển đổi cao & Mega Day', 'Thiết kế đồ họa chuyển động, hiệu ứng hình ảnh và kinetic typography cho các cột mốc thương mại điện tử lớn, sự kiện Mega Sale và Brand Day.'],
+      ['Tích hợp công nghệ AI tạo sinh', 'Tiên phong ứng dụng các công cụ AI (Runway, Kling, Vbee, Midjourney) vào timeline dựng phim thực tế, tạo các cảnh quay độc đáo với tốc độ nhanh và chi phí tối ưu.'],
+      ['Showreel pitching & Phát triển kinh doanh', 'Xây dựng các video sizzle reel và showreel chào thầu ấn tượng, góp phần quan trọng vào việc thắng thầu các dự án và tài khoản thương hiệu mới.']
+    ]
+  },
+  {
+    company: 'NEW ERA MEDIA',
+    date: '12.2023 — 10.2024',
+    dateVi: '12.2023 — 10.2024',
+    role: 'Videographer & Editor',
+    roleVi: 'Quay phim & Dựng phim',
+    lead: 'Managed multi-camera filming and post-production for corporate storytelling, product reviews, and live commercial events.',
+    leadVi: 'Phụ trách quay phim đa máy và hậu kỳ cho video doanh nghiệp, đánh giá sản phẩm và các sự kiện thương mại trực tiếp.',
+    bullets: [
+      ['Multi-Camera Filming & Full Editing', 'Planned, lit, captured, and edited comprehensive corporate content libraries, tech and product reviews, and large-scale promotional event recaps from multi-camera setups to final master exports.'],
+      ['Production Asset Planning', 'Contributed directly to campaign content scheduling, visual framing strategies, and delivery pipelines tailored for YouTube, social media, and digital channels.'],
+      ['Equipment & Cinema Camera Readiness', 'Supervised technical equipment inventory, configuring cinema cameras (Sony FX/Alpha line), professional prime/zoom lenses, wireless audio, and multi-point studio lighting schematics.']
+    ],
+    bulletsVi: [
+      ['Quay đa máy & Hoàn thiện hậu kỳ', 'Lên kế hoạch, thiết kế ánh sáng, quay phim và dựng hoàn chỉnh các nội dung doanh nghiệp, video đánh giá công nghệ - sản phẩm và sự kiện quảng bá quy mô lớn từ đa góc máy đến bản master.'],
+      ['Lập kế hoạch tư liệu sản xuất', 'Tham gia xây dựng kế hoạch phân bổ nội dung, góc máy và quy cách xuất file tối ưu cho YouTube, mạng xã hội và truyền thông số.'],
+      ['Quản lý thiết bị máy quay & ánh sáng', 'Vận hành và bảo quản hệ thống thiết bị chuyên nghiệp (dòng máy Sony Alpha/Cinema, ống kính prime/zoom, âm thanh không dây và dàn đèn studio đa điểm).']
+    ]
+  },
+  {
+    company: 'WONDERJOY STUDIO',
+    date: '12.2023 — 10.2024',
+    dateVi: '12.2023 — 10.2024',
+    role: 'Photographer & Retoucher',
+    roleVi: 'Nhiếp ảnh & Retouch',
+    lead: 'Delivered commercial studio photography, creative lighting design, and precision digital retouching for corporate and lifestyle brands.',
+    leadVi: 'Chụp ảnh studio thương mại, thiết kế ánh sáng sáng tạo và xử lý hậu kỳ hình ảnh cao cấp cho khách hàng doanh nghiệp và phong cách sống.',
+    bullets: [
+      ['Studio Photography & Art Direction', 'Directed and executed studio portraiture, corporate headshots, and product imagery with meticulous attention to styling, mood, and brand guidelines.'],
+      ['Technical Lighting Schematics', 'Engineered customized multi-light setups (key, fill, rim, background grids) to sculpt precise silhouettes and elevate product textures.'],
+      ['High-End Digital Retouching', 'Performed non-destructive high-end skin retouching, color grading, frequency separation, and product finishing in Adobe Photoshop and Lightroom.']
+    ],
+    bulletsVi: [
+      ['Nhiếp ảnh studio & Định hướng hình ảnh', 'Trực tiếp chụp ảnh chân dung doanh nghiệp, profile chuyên nghiệp và sản phẩm với sự trau chuốt về bố cục, ánh sáng và phong cách thương hiệu.'],
+      ['Thiết kế sơ đồ ánh sáng studio', 'Xây dựng hệ thống đánh sáng đa nguồn (key light, fill light, rim light, background grid) để khắc họa rõ nét đường nét chủ thể và chất liệu sản phẩm.'],
+      ['Retouch kỹ thuật số cao cấp', 'Thực hiện xử lý da chuyên sâu không phá hủy (frequency separation), căn chỉnh màu sắc chuẩn xác và hoàn thiện chi tiết sản phẩm trên Photoshop và Lightroom.']
+    ]
+  },
+  {
+    company: 'GREEN ACADEMY',
+    date: '08.2023 — 12.2023',
+    dateVi: '08.2023 — 12.2023',
+    role: 'Media Staff · Part-time',
+    roleVi: 'Nhân viên Media · Bán thời gian',
+    lead: 'Produced instructor and student video interviews, digital ad campaigns, and marketing design collateral for education programs.',
+    leadVi: 'Sản xuất video phỏng vấn giảng viên - học viên, video quảng bá khóa học và thiết kế ấn phẩm truyền thông cho học viện.',
+    bullets: [
+      ['Interview & Promotional Filming', 'Filmed and edited instructor spotlights, student success testimonials, and digital promotional ads tailored to drive course admissions and brand awareness.'],
+      ['Marketing & Brand Collateral Design', 'Designed foundational marketing materials including official course catalogs, commercial rate sheets, banners, and social media graphics in Adobe Illustrator.']
+    ],
+    bulletsVi: [
+      ['Quay dựng phỏng vấn & Video quảng bá', 'Quay và dựng các video chia sẻ từ giảng viên, câu chuyện học viên và video quảng cáo ngắn nhằm gia tăng nhận diện thương hiệu và tuyển sinh.'],
+      ['Thiết kế ấn phẩm truyền thông', 'Thiết kế bộ nhận diện tài liệu tuyển sinh, catalogue khóa học, bảng giá dịch vụ và đồ họa truyền thông mạng xã hội trên Adobe Illustrator.']
+    ]
+  }
 ];
 
 export const services = [
