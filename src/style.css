@@ -276,11 +276,11 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
 .hero-title-front .hero-name-word {
   color: transparent !important;
   -webkit-text-fill-color: transparent !important;
-  -webkit-text-stroke: 1.1px rgba(69, 208, 245, 0.95);
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  filter: drop-shadow(0 0 10px rgba(69, 208, 245, 0.75)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
+  background: linear-gradient(100deg, #ffffff 0%, #e2e7ff 30%, #90aaff 65%, #45d0f5 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-stroke: 1.5px #04060c;
+  filter: drop-shadow(0 0 18px rgba(69, 208, 245, 0.95)) drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95));
 }
 .hero-title-front .hero-name-word .orange {
   display: inline-block;
@@ -297,7 +297,7 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
 .hero-aside { justify-self: stretch; }
 .hero-aside p { font-size: 15px; line-height: 1.85; max-width: 440px; }
 .hero-cta-buttons { display: flex; gap: 14px; margin-top: 22px; }
-.hero-cta-buttons .button { flex: 1; min-height: 46px; }
+.hero-cta-buttons .button { min-height: 46px; padding-inline: 26px; }
 .hero-zalo-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-color: rgba(0, 132, 255, 0.4); background: rgba(0, 104, 255, 0.12); color: #fff; }
 .hero-zalo-btn:hover { border-color: #0084ff; background: rgba(0, 132, 255, 0.25); box-shadow: 0 0 28px rgba(0, 132, 255, 0.35); }
 
@@ -794,7 +794,7 @@ summary::-webkit-details-marker { display: none; }
     mask-size: clamp(110px, 24vw, 160px) clamp(140px, 30vw, 200px);
   }
   .hero-title-front .hero-name-word {
-    -webkit-text-stroke: 0.9px rgba(69, 208, 245, 0.95);
+    -webkit-text-stroke: 1.2px #04060c;
   }
   .hero-avatar-frame {
     grid-area: 1 / 1;
@@ -941,7 +941,7 @@ summary::-webkit-details-marker { display: none; }
     -webkit-mask-size: clamp(92px, 24vw, 122px) clamp(118px, 31vw, 156px);
     mask-size: clamp(92px, 24vw, 122px) clamp(118px, 31vw, 156px);
   }
-  .hero-title-front .hero-name-word { -webkit-text-stroke: 0.85px rgba(69, 208, 245, 0.95); }
+  .hero-title-front .hero-name-word { -webkit-text-stroke: 1px #04060c; }
   .hero-specialty { font-size: 21px; }
   .hero-aside { display: flex; flex-direction: column; gap: 14px; width: 100%; }
   .hero-aside p { max-width: 100%; font-size: 13.5px; line-height: 1.65; }
