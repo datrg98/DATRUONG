@@ -138,46 +138,42 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
   text-align: center;
   width: 100%;
   user-select: none;
+  z-index: 2;
 }
 
 .hero-name-word {
   display: inline-block;
   font-size: clamp(48px, 8.4vw, 124px);
-  font-weight: 700;
+  font-weight: 750;
   line-height: 1.1;
-  letter-spacing: -.05em;
+  letter-spacing: -.04em;
   white-space: nowrap;
   padding-block: 6px 12px;
   padding-right: 4px;
   overflow: visible;
-}
-
-/* Layer 1: Solid & Gradient Filled Text BEHIND Avatar */
-.hero-title-back {
-  z-index: 1;
-}
-.hero-title-back .hero-name-word {
-  background: linear-gradient(100deg, #f4f5ff 0%, #d6d3ff 30%, #8f88ff 62%, #45d0f5 100%);
-  background-size: 220% 100%;
+  background: linear-gradient(110deg, #ffffff 0%, #edf0ff 25%, #bac8ff 60%, #45d0f5 100%);
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 24px rgba(108, 99, 255, 0.3));
   animation: name-sheen 16s ease-in-out infinite alternate;
 }
-.hero-title-back .hero-name-word .orange {
+
+.hero-name-word .orange {
   display: inline-block;
   color: var(--accent-2);
   -webkit-text-fill-color: var(--accent-2);
   background: none;
   -webkit-background-clip: initial;
   background-clip: initial;
-  text-shadow: 0 0 16px rgba(69, 208, 245, 0.7);
+  text-shadow: 0 0 16px rgba(69, 208, 245, 0.95);
   margin-left: 2px;
 }
 @keyframes name-sheen { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
 
-/* Layer 2: Middle Cutout Avatar overlapping the typography */
+/* Middle Cutout Avatar overlapping the typography */
 .hero-avatar-frame {
   grid-area: 1 / 1;
   align-self: end;
@@ -188,7 +184,7 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
   width: clamp(180px, 23vw, 340px);
   height: clamp(230px, 29vw, 430px);
   flex-shrink: 0;
-  z-index: 2;
+  z-index: 1;
 }
 .hero-avatar-ambient {
   position: absolute;
@@ -258,37 +254,6 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
   background: #ff3d5e;
   box-shadow: 0 0 8px #ff3d5e;
   animation: rec-blink 1.6s steps(1) infinite;
-}
-
-/* Layer 3: Creative Styled Text OVER Avatar (masked exclusively to avatar silhouette) */
-.hero-title-front {
-  z-index: 3;
-  pointer-events: none;
-  -webkit-mask-image: url('/dat-truong-avatar.webp');
-  -webkit-mask-size: clamp(180px, 23vw, 340px) clamp(230px, 29vw, 430px);
-  -webkit-mask-position: center bottom;
-  -webkit-mask-repeat: no-repeat;
-  mask-image: url('/dat-truong-avatar.webp');
-  mask-size: clamp(180px, 23vw, 340px) clamp(230px, 29vw, 430px);
-  mask-position: center bottom;
-  mask-repeat: no-repeat;
-}
-.hero-title-front .hero-name-word {
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-  background: linear-gradient(100deg, #ffffff 0%, #e2e7ff 30%, #90aaff 65%, #45d0f5 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-stroke: 1.5px #04060c;
-  filter: drop-shadow(0 0 18px rgba(69, 208, 245, 0.95)) drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95));
-}
-.hero-title-front .hero-name-word .orange {
-  display: inline-block;
-  -webkit-text-stroke: 0;
-  color: var(--accent-2) !important;
-  -webkit-text-fill-color: var(--accent-2) !important;
-  text-shadow: 0 0 16px rgba(69, 208, 245, 0.95);
-  margin-left: 2px;
 }
 
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: start; gap: 48px; margin-top: 16px; }
@@ -789,13 +754,6 @@ summary::-webkit-details-marker { display: none; }
     letter-spacing: -.04em;
     flex-shrink: 0;
   }
-  .hero-title-front {
-    -webkit-mask-size: clamp(110px, 24vw, 160px) clamp(140px, 30vw, 200px);
-    mask-size: clamp(110px, 24vw, 160px) clamp(140px, 30vw, 200px);
-  }
-  .hero-title-front .hero-name-word {
-    -webkit-text-stroke: 1.2px #04060c;
-  }
   .hero-avatar-frame {
     grid-area: 1 / 1;
     align-self: end;
@@ -937,11 +895,6 @@ summary::-webkit-details-marker { display: none; }
   .hero-avatar-badge { font-size: 7px; padding: 2px 6px; bottom: 2px; gap: 4px; }
   .hero-name-last { font-size: clamp(21px, 6vw, 30px); }
   .hero-name-word { padding-block: 2px 6px; white-space: nowrap; flex-shrink: 0; }
-  .hero-title-front {
-    -webkit-mask-size: clamp(92px, 24vw, 122px) clamp(118px, 31vw, 156px);
-    mask-size: clamp(92px, 24vw, 122px) clamp(118px, 31vw, 156px);
-  }
-  .hero-title-front .hero-name-word { -webkit-text-stroke: 1px #04060c; }
   .hero-specialty { font-size: 21px; }
   .hero-aside { display: flex; flex-direction: column; gap: 14px; width: 100%; }
   .hero-aside p { max-width: 100%; font-size: 13.5px; line-height: 1.65; }
