@@ -257,11 +257,11 @@
   "density": 0.79
  },
  {
-  "slug": "ajmal",
-  "name": "Ajmal",
-  "width": 104,
+  "slug": "acne-aid",
+  "name": "Acne-Aid",
+  "width": 223,
   "height": 150,
-  "density": 0.769
+  "density": 0.398
  },
  {
   "slug": "noreva",
@@ -271,81 +271,10 @@
   "density": 0.331
  },
  {
-  "slug": "acne-aid",
-  "name": "Acne-Aid",
-  "width": 223,
-  "height": 150,
-  "density": 0.398
- },
- {
   "slug": "aqua",
   "name": "AQUA",
   "width": 360,
   "height": 91,
   "density": 0.438
- },
- {
-  "slug": "the-laughing-cow",
-  "name": "The Laughing Cow",
-  "width": 137,
-  "height": 150,
-  "density": 0.556,
-  "scale": 1.2
- },
- {
-  "slug": "sony-alpha",
-  "name": "Sony Alpha",
-  "width": 274,
-  "height": 55,
-  "density": 0.459,
-  "scale": 1.05
- },
- {
-  "slug": "tiktok-shop",
-  "name": "TikTok Shop",
-  "width": 340,
-  "height": 56,
-  "density": 0.365,
-  "scale": 1.05
- },
- {
-  "slug": "onpoint",
-  "name": "OnPoint",
-  "width": 306,
-  "height": 60,
-  "density": 0.453,
-  "scale": 1.05
- },
- {
-  "slug": "uimass",
-  "name": "UI MASS",
-  "width": 295,
-  "height": 54,
-  "density": 0.499,
-  "scale": 1.05
- },
- {
-  "slug": "topgum",
-  "name": "TopGum",
-  "width": 310,
-  "height": 74,
-  "density": 0.351,
-  "scale": 1.05
- },
- {
-  "slug": "vus",
-  "name": "VUS",
-  "width": 165,
-  "height": 62,
-  "density": 0.49,
-  "scale": 1.05
- },
- {
-  "slug": "matthieu",
-  "name": "Matthieu",
-  "width": 331,
-  "height": 51,
-  "density": 0.331,
-  "scale": 1.05
  }
 ]

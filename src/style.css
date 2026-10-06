@@ -422,6 +422,119 @@ button, a, input, textarea, select, summary { outline-offset: 5px; }
 .logo-wall li:hover img { opacity: 1; transform: scale(1.05); filter: drop-shadow(0 0 16px rgba(255, 255, 255, .22)); }
 .logo-wall li:hover .logo-name { opacity: 1; transform: none; }
 
+.marquee-item.marquee-more {
+  border-color: rgba(0, 240, 255, 0.35);
+  background: rgba(0, 240, 255, 0.05);
+}
+.marquee-item.marquee-more span {
+  color: #00f0ff;
+  font-weight: 600;
+}
+.marquee-item.marquee-more:hover {
+  border-color: #00f0ff;
+  background: rgba(0, 240, 255, 0.16);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.35);
+}
+
+/* 40th slot: Dedicated '& Many more' client card */
+.logo-wall li.logo-wall-more {
+  padding: 0;
+  cursor: pointer;
+  counter-increment: none;
+  background: linear-gradient(145deg, rgba(108, 99, 255, 0.08), rgba(0, 240, 255, 0.04) 50%, rgba(5, 7, 14, 0.95));
+  overflow: hidden;
+}
+.logo-wall li.logo-wall-more::before {
+  content: '40+';
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #00f0ff;
+  opacity: 0.85;
+}
+.logo-more-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px 8px;
+  text-decoration: none;
+  text-align: center;
+  gap: 5px;
+  transition: transform 300ms var(--ease), background 300ms;
+}
+.logo-more-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  background: rgba(0, 240, 255, 0.08);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.18);
+  transition: transform 300ms var(--ease), border-color 300ms, box-shadow 300ms, background 300ms;
+}
+.logo-more-plus {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  color: #00f0ff;
+  transition: transform 350ms var(--ease);
+}
+.logo-more-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.logo-more-title {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.2;
+  transition: color 250ms;
+}
+.logo-more-desc {
+  display: block;
+  font-family: var(--sans);
+  font-size: 8.5px;
+  color: var(--muted);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  transition: color 250ms;
+}
+.logo-wall li.logo-wall-more:hover {
+  background: linear-gradient(145deg, rgba(108, 99, 255, 0.16), rgba(0, 240, 255, 0.12) 50%, rgba(5, 7, 14, 0.98));
+}
+.logo-wall li.logo-wall-more:hover .logo-more-icon {
+  border-color: #00f0ff;
+  background: rgba(0, 240, 255, 0.22);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  transform: scale(1.1);
+}
+.logo-wall li.logo-wall-more:hover .logo-more-plus {
+  transform: rotate(90deg);
+}
+.logo-wall li.logo-wall-more:hover .logo-more-title {
+  color: #00f0ff;
+}
+.logo-wall li.logo-wall-more:hover .logo-more-desc {
+  color: var(--ink);
+}
+
+
 /* About, career and tools */
 .about-section { padding-block: var(--section-space); }
 .about-grid, .career-grid, .toolkit, .faq-section { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr); gap: clamp(40px, 7vw, 112px); }
@@ -673,7 +786,7 @@ summary::-webkit-details-marker { display: none; }
   .feature-caption { gap: 24px; }
   .feature-specs { gap: 20px; }
   .film-watch { padding-left: 20px; gap: 10px; font-size: 12px; }
-  .logo-wall { --cols: 6; }
+  .logo-wall { --cols: 5; }
   .about-grid, .career-grid, .toolkit, .faq-section { gap: 40px; }
   .about-content .about-lead { font-size: 17px; }
   .service-row { grid-template-columns: 28px 1fr 1fr 40px; gap: 22px; }
@@ -932,6 +1045,12 @@ summary::-webkit-details-marker { display: none; }
   .logo-wall { margin-inline: calc(var(--gutter) * -1); border-left: 0; }
   .logo-wall li:nth-child(4n) { border-right: 0; }
   .logo-wall li::before { display: none; }
+  .logo-wall li.logo-wall-more::before { display: none; }
+  .logo-more-card { padding: 4px 2px; gap: 3px; }
+  .logo-more-icon { width: 18px; height: 18px; }
+  .logo-more-plus { font-size: 11px; }
+  .logo-more-title { font-size: 8px; letter-spacing: 0.02em; }
+  .logo-more-desc { font-size: 7px; }
   .logo-wall img { width: min(calc(var(--w) * 1.15), 80%); }
   .logo-name { display: none; }
   .hero-timeline { grid-template-columns: auto minmax(0, 1fr); }
