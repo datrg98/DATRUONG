@@ -1,15 +1,18 @@
 {
-  "name": "cv",
-  "version": "0.0.0",
+  "name": "datruong-portfolio",
+  "version": "1.1.0",
   "private": true,
+  "description": "Dat Truong — Senior Video Editor & Generative AI Media Specialist. A scroll-driven, cinematic portfolio (EN / VI).",
+  "author": "Dat Truong <dattvq98@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datrg98/DATRUONG.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/render-pages.mjs && vite build",
-    "preview": "vite preview",
-    "render": "node scripts/render-pages.mjs",
-    "resume": "node scripts/build-resume-pdf.mjs",
-    "patch-cv": "node scripts/patch-cv-name.mjs"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "vite": "^8.0.12"
