@@ -75,13 +75,150 @@ for (const vi of [false, true]) {
 
   const clients = `<section class="shell clients-section" id="clients" aria-labelledby="clients-title"><div class="clients-head"><div><span class="eyebrow">02 / ${t('CLIENTS', 'KHÁCH HÀNG')}</span><h2 id="clients-title">${t('Brands I’ve edited for', 'Thương hiệu tôi đã dựng phim')}</h2></div><p>${t('40+ brands across beauty, healthcare, nutrition, sportswear and technology, from campaign films to e-commerce and social edits.', '40+ thương hiệu thuộc làm đẹp, chăm sóc sức khỏe, dinh dưỡng, thời trang thể thao và công nghệ, từ phim chiến dịch đến video thương mại điện tử và mạng xã hội.')}</p></div><div class="logo-marquee" aria-hidden="true"><div class="marquee-track">${logos.map(({ slug, name }) => `<div class="marquee-item"><img src="/logos/${slug}.webp" alt="" loading="lazy" decoding="async"><span>${esc(name)}</span></div>`).join('')}${marqueeMore}${logos.map(({ slug, name }) => `<div class="marquee-item"><img src="/logos/${slug}.webp" alt="" loading="lazy" decoding="async"><span>${esc(name)}</span></div>`).join('')}${marqueeMore}</div></div><ul class="logo-wall" role="list">${logos.map(({ slug, name, width, height, density, scale }) => `<li><img src="/logos/${slug}.webp" alt="${esc(name)}" width="${width}" height="${height}" loading="lazy" decoding="async" style="--w: ${logoWidth({ width, height, density, scale })}"><span class="logo-name" aria-hidden="true">${esc(name)}</span></li>`).join('')}${moreCard}</ul></section>`;
 
+  const appTools = [
+    {
+      id: 'adobe',
+      distributor: 'Adobe Inc.',
+      name: 'Adobe Creative Cloud',
+      featured: true,
+      tag: t('Unified Suite · 5 Apps', 'Bộ công cụ hợp nhất · 5 ứng dụng'),
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#FA0F00"/><path d="M13.97 4.5H19.5V19.5L13.97 4.5ZM4.5 4.5H10.03L4.5 19.5V4.5ZM12 11.22L15.17 19.5H12.91L11.72 16.31H8.97L11.14 10.74L12 11.22Z" fill="#FFFFFF"/></svg>`,
+      desc: t('Primary commercial post-production backbone for non-linear video editing, keyframe motion graphics, visual assets and audio mastering.', 'Hệ sinh thái hậu kỳ cốt lõi cho dựng phim thương mại, motion graphics, xử lý hình ảnh và master âm thanh chuyên nghiệp.'),
+      subchips: [
+        { key: 'Pr', name: 'Premiere Pro', role: t('Cinema & Commercial Edit', 'Dựng phim thương mại') },
+        { key: 'Ae', name: 'After Effects', role: t('Motion & Visual VFX', 'Motion & Kỹ xảo VFX') },
+        { key: 'Ps', name: 'Photoshop', role: t('Concept & Asset Design', 'Thiết kế & Xử lý ảnh') },
+        { key: 'Ai', name: 'Illustrator', role: t('Vector & Typography', 'Vector & Đồ họa chữ') },
+        { key: 'Au', name: 'Audition', role: t('Audio Clean & Master', 'Lọc tạp âm & Master') }
+      ]
+    },
+    {
+      id: 'capcut',
+      distributor: 'ByteDance',
+      name: 'CapCut Pro',
+      featured: false,
+      tag: '9:16 Kinetic Video',
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#0A0E18" stroke="rgba(0, 240, 255, 0.3)"/><path d="M4.8 7.5L12 11.6L4.8 15.8V7.5Z" fill="#00F0FF"/><path d="M19.2 7.5L12 11.6L19.2 15.8V7.5Z" fill="#FFFFFF"/><path d="M12 4.5L16.5 12L12 19.5L7.5 12L12 4.5Z" fill="#00E5FF" fill-opacity="0.25"/></svg>`,
+      desc: t('High-velocity vertical video editing, trend-responsive pacing, subtitle choreography and rapid social turnaround.', 'Dựng video dọc 9:16 tốc độ cao, nhịp dựng bắt trend, hiệu ứng phụ đề động và tối ưu thời gian bàn giao chiến dịch.'),
+      subchips: []
+    },
+    {
+      id: 'davinci',
+      distributor: 'Blackmagic Design',
+      name: 'DaVinci Resolve',
+      featured: false,
+      tag: 'Color Science',
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#0C0F1A" stroke="rgba(255, 255, 255, 0.12)"/><path d="M12 12L12 4C15.5 4 18.5 6.2 19.5 9.5L12 12Z" fill="#FF3B30"/><path d="M12 12L5 16C4 13.5 4.3 10.2 6.2 7.8L12 12Z" fill="#007AFF"/><path d="M12 12L17 18C14.8 20 11.2 20.2 8.8 18.6L12 12Z" fill="#FFCC00"/><circle cx="12" cy="12" r="2.8" fill="#0C0F1A"/></svg>`,
+      desc: t('Node-based color grading, digital film emulation, contrast balancing and broadcast delivery calibration.', 'Chỉnh màu node-based chuyên sâu, giả lập chất phim điện ảnh, cân bằng tương phản và chuẩn hóa dải màu phát sóng.'),
+      subchips: []
+    }
+  ];
+
+  const aiTools = [
+    {
+      id: 'google',
+      distributor: 'Google DeepMind',
+      name: 'Google AI',
+      featured: true,
+      tag: t('Frontier Models · 2 Models', 'Mô hình tiên phong · 2 mô hình'),
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#0C0F1A" stroke="rgba(255, 255, 255, 0.1)"/><g transform="translate(2, 2) scale(0.833)"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.88c2.27-2.09 3.665-5.17 3.665-9.09z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.27v3.09C3.25 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.32c-.25-.72-.38-1.49-.38-2.32s.13-1.6.38-2.32V6.59H1.27C.46 8.2.005 10.05.005 12s.46 3.8 1.265 5.41l4.01-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.25 2.7 1.27 6.59l4.01 3.09c.95-2.83 3.6-4.93 6.72-4.93z"/></g></svg>`,
+      desc: t('Flagship multimodal generative intelligence enabling cinematic high-definition video generation and foundation visual synthesis.', 'Hệ thống AI đa phương thức đỉnh cao phục vụ tạo sinh video điện ảnh độ phân giải cao và nền tảng thị giác đột phá.'),
+      subchips: [
+        { key: 'Veo 3.1', name: '', role: t('Cinematic Video Generation', 'Tạo video điện ảnh sắc nét') },
+        { key: 'Nano Banana Pro', name: '', role: t('Multimodal Visual Foundation', 'Mô hình thị giác cao cấp') }
+      ]
+    },
+    {
+      id: 'bytedance-ai',
+      distributor: 'ByteDance',
+      name: 'ByteDance AI',
+      featured: true,
+      tag: t('Generative Models · 2 Models', 'Mô hình tạo sinh · 2 mô hình'),
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#0C0F1A" stroke="rgba(0, 229, 255, 0.25)"/><g transform="translate(3, 3) scale(0.75)"><path fill="#00E5FF" d="M0 2.572l4.115 1.064v16.736L0 21.428V2.572z"/><path fill="#00B5FB" d="M6.529 10.896l4.115 1.064v8.979l-4.115 1.064v-11.107z"/><path fill="#2B5FF8" d="M17.455 8.193v11.107l-4.123-1.064V9.257l4.123-1.064z"/><path fill="#7C3AED" d="M19.877 1.469L24 2.533v18.943l-4.123 1.056V1.469z"/></g></svg>`,
+      desc: t('Next-generation generative engines designed for high-motion consistency, cinema-scale camera control and ultra-detailed image rendering.', 'Hệ mô hình AI thế hệ mới với khả năng chuyển động mượt mà, chuyển động máy quay chuẩn điện ảnh và kết xuất hình ảnh chi tiết.'),
+      subchips: [
+        { key: 'Seedance', name: '', role: t('Cinematic Video Model', 'Mô hình sinh video điện ảnh') },
+        { key: 'Seedream', name: '', role: t('High-Fidelity Diffusion Image', 'Mô hình tạo ảnh phân giải cao') }
+      ]
+    },
+    {
+      id: 'runway',
+      distributor: 'Runway ML',
+      name: 'Runway',
+      featured: false,
+      tag: 'Gen-3 Alpha',
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#0C0F1A" stroke="rgba(255, 255, 255, 0.12)"/><g transform="translate(3.5, 3.5) scale(0.3)"><path d="M26.83 18.09C20.64 18.09 17.36 21.75 17.36 28.26V56.37H0.36V1.27H9.91L15.87 7.63C18.71 3.51 22.96 1.27 28.7 1.27H33.84V18.09H26.83Z" fill="#FFFFFF"/></g></svg>`,
+      desc: t('World simulation models, dynamic camera choreography and temporal scene transitions.', 'Mô hình mô phỏng bối cảnh thế giới, chuyển động máy quay đa chiều và chuyển cảnh mượt mà.'),
+      subchips: []
+    },
+    {
+      id: 'kling',
+      distributor: 'Kuaishou',
+      name: 'Kling AI',
+      featured: false,
+      tag: 'Kling 1.5',
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true"><defs><linearGradient id="kling-grad-${vi?'vi':'en'}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF3366"/><stop offset="50%" stop-color="#8F57FF"/><stop offset="100%" stop-color="#00D4FF"/></linearGradient></defs><rect width="24" height="24" rx="5" fill="#0C0E1A" stroke="rgba(255, 51, 102, 0.25)"/><path d="M12 4C12 8.4 8.4 12 4 12C8.4 12 12 15.6 12 20C12 15.6 15.6 12 20 12C15.6 12 12 8.4 12 4Z" fill="url(#kling-grad-${vi?'vi':'en'})"/><circle cx="12" cy="12" r="1.8" fill="#FFFFFF"/></svg>`,
+      desc: t('Realistic physical world simulation, fluid motion dynamics and multi-angle cinematic scenes.', 'Mô phỏng vật lý chuyển động thế giới thực, chuyển động tự nhiên và góc quay đa chiều.'),
+      subchips: []
+    },
+    {
+      id: 'elevenlabs',
+      distributor: 'ElevenLabs',
+      name: 'ElevenLabs',
+      featured: false,
+      tag: 'Voice & SFX AI',
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#0B0D16" stroke="rgba(255, 255, 255, 0.12)"/><path d="M7 5v14h3V5H7zm7 0v14h3V5h-3z" fill="#FFFFFF"/></svg>`,
+      desc: t('Emotionally expressive neural voice cloning, multilingual dialogue dubbing and Foley sound effect synthesis.', 'Nhân bản giọng nói AI truyền cảm, lồng tiếng đa ngôn ngữ và tạo hiệu ứng âm thanh Foley điện ảnh.'),
+      subchips: []
+    },
+    {
+      id: 'higgsfield',
+      distributor: 'Higgsfield',
+      name: 'Higgsfield AI',
+      featured: false,
+      tag: 'Cinema Video AI',
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true"><defs><linearGradient id="higgs-grad-${vi?'vi':'en'}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#9945FF"/><stop offset="100%" stop-color="#00F0FF"/></linearGradient></defs><rect width="24" height="24" rx="5" fill="#0A0D18" stroke="rgba(153, 69, 255, 0.3)"/><path d="M7 6v12h2.5v-4.8h5v4.8H17V6h-2.5v4.8h-5V6H7z" fill="url(#higgs-grad-${vi?'vi':'en'})"/><circle cx="12" cy="12" r="1.3" fill="#FFFFFF"/></svg>`,
+      desc: t('Specialized cinema camera angles, dynamic body control and character-consistent narrative generation.', 'Điều khiển góc máy điện ảnh chuyên biệt, chuyển động cơ thể sống động và duy trì tính nhất quán nhân vật.'),
+      subchips: []
+    },
+    {
+      id: 'midjourney',
+      distributor: 'Midjourney Inc.',
+      name: 'Midjourney',
+      featured: false,
+      tag: 'v6 / Niji',
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true"><defs><linearGradient id="mj-grad-${vi?'vi':'en'}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#8F88FF"/></linearGradient></defs><rect width="24" height="24" rx="5" fill="#090B14" stroke="rgba(143, 136, 255, 0.25)"/><path d="M5 16.5C8.5 18.8 15.5 18.8 19 16.5L17.5 18C14.2 20 9.8 20 6.5 18L5 16.5Z" fill="url(#mj-grad-${vi?'vi':'en'})"/><path d="M11.5 5.5C11.5 9.5 7 13 7 14.5H11.5V5.5Z" fill="url(#mj-grad-${vi?'vi':'en'})" fill-opacity="0.95"/><path d="M12.5 7.5C12.5 10.5 17 13.2 17 14.5H12.5V7.5Z" fill="url(#mj-grad-${vi?'vi':'en'})" fill-opacity="0.75"/></svg>`,
+      desc: t('Photorealistic concept art, lighting textures, key visual exploration and cinematic storyboards.', 'Phác thảo concept visual chân thực, moodboard ánh sáng và phân cảnh storyboard chi tiết.'),
+      subchips: []
+    },
+    {
+      id: 'vbee',
+      distributor: 'Vbee',
+      name: 'Vbee AI',
+      featured: false,
+      tag: 'Vietnamese Neural TTS',
+      svg: `<svg class="tool-logo-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true"><defs><linearGradient id="vbee-grad-${vi?'vi':'en'}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7A00"/><stop offset="100%" stop-color="#FFB800"/></linearGradient></defs><rect width="24" height="24" rx="5" fill="#130D08" stroke="rgba(255, 122, 0, 0.3)"/><path d="M6.5 10v4M9.25 7.5v9M12 5.5v13M14.75 7.5v9M17.5 10v4" stroke="url(#vbee-grad-${vi?'vi':'en'})" stroke-width="2" stroke-linecap="round"/></svg>`,
+      desc: t('Natural Vietnamese neural speech synthesis tailored for commercial ads and broadcast narration.', 'Giọng đọc AI tiếng Việt tự nhiên, đa ngữ điệu vùng miền chuẩn cho quảng cáo và phóng sự.'),
+      subchips: []
+    }
+  ];
+
+  const renderToolCard = (item) => {
+    const subchipsHtml = item.subchips.length > 0
+      ? `<div class="tool-subchips">${item.subchips.map(sc => `<span class="tool-subchip"><strong class="subchip-key">${sc.key}</strong>${sc.name ? `<span class="subchip-name">${sc.name}</span>` : ''}<span class="subchip-role">${sc.role}</span></span>`).join('')}</div>`
+      : '';
+    return `<article class="tool-card ${item.featured ? 'tool-card-featured' : ''}" data-tool="${item.id}"><div class="tool-card-head"><div class="tool-card-brand">${item.svg}<div><h5 class="tool-name">${item.name}</h5><span class="tool-distributor">${item.distributor}</span></div></div><span class="tool-model-tag">${item.tag}</span></div><p class="tool-desc">${item.desc}</p>${subchipsHtml}</article>`;
+  };
+
+  const toolkitHtml = `<div class="shell toolkit"><div class="toolkit-top"><div><span class="eyebrow">${t('TOOLS OF THE TRADE', 'BỘ CÔNG CỤ')}</span><h3>${t('Software & AI Stack', 'Công cụ & Mô hình AI')}</h3><p class="toolkit-lead">${t('An integrated pipeline combining industry-standard post-production suites with next-generation generative AI video and visual models.', 'Quy trình hậu kỳ hợp nhất kết hợp phần mềm sáng tạo tiêu chuẩn điện ảnh và các mô hình AI tạo sinh đa phương thức tiên tiến nhất.')}</p></div><div class="credentials"><span class="eyebrow">${t('RECOGNITION & LEARNING', 'GHI NHẬN & HỌC TẬP')}</span><p><strong>${t('Sony Alpha Vietnam', 'Sony Alpha Việt Nam')}</strong><br>${t('Selection of the Month · August 2024', 'Video ấn tượng nhất tháng · 08.2024')}</p><details><summary>${t('Courses & credentials', 'Khóa học & Chứng chỉ')} <span>+</span></summary><ul><li>AI Video School: Veo 3.1, Kling, Sora+ — Udemy, 27h, 03.2026</li><li>Diffusion Mastery: Flux, Stable Diffusion, Midjourney — Udemy, 22.5h, 03.2026</li><li>IELTS Academic 6.0 — IDP, 2019</li></ul></details></div></div><div class="toolkit-groups"><div class="tool-group"><div class="tool-group-header"><div class="tool-group-title-wrap"><span class="tool-group-badge tool-badge-app">${t('CREATIVE APPLICATIONS', 'PHẦN MỀM SÁNG TẠO')}</span><h4>${t('Post-Production & Motion Suites', 'Hệ phần mềm dựng phim & đồ họa')}</h4></div><span class="tool-group-count">3 ${t('STUDIOS / ECOSYSTEMS', 'HỆ CÔNG CỤ')}</span></div><div class="tool-grid tool-grid-apps">${appTools.map(renderToolCard).join('')}</div></div><div class="tool-group"><div class="tool-group-header"><div class="tool-group-title-wrap"><span class="tool-group-badge tool-badge-ai">${t('AI TOOL MODELS & ENGINES', 'MÔ HÌNH AI & CÔNG NGHỆ TẠO SINH')}</span><h4>${t('Generative Video & Multimodal Engines', 'Mô hình sinh video & công nghệ AI')}</h4></div><span class="tool-group-count">8 ${t('MODELS & ENGINES', 'MÔ HÌNH & ENGINE')}</span></div><div class="tool-grid tool-grid-ai">${aiTools.map(renderToolCard).join('')}</div></div></div></div>`;
+
   const about = `<section class="about-section" id="about"><div class="shell about-grid"><div class="about-visual"><div class="portrait-frame"><img src="/profile.jpg" alt="${name}" loading="lazy" width="800" height="1000"><span class="rec" aria-hidden="true">REC</span></div><div class="portrait-caption"><span>${name}</span><span>${t('THE PERSON BEHIND THE FRAME', 'NGƯỜI ĐỨNG SAU KHUNG HÌNH')}</span></div></div><div class="about-content"><span class="eyebrow">03 / ${t('ABOUT ME', 'GIỚI THIỆU')}</span><h2>${t('Behind the edit.', 'Phía sau bản dựng.')}</h2><p class="about-lead">${t('I’m Dat, a Senior Video Editor & Media Specialist. I turn footage, ideas and emerging technology into stories people want to watch.', 'Tôi là Đạt, Senior Video Editor & chuyên gia Media. Tôi kết nối thước phim, ý tưởng và công nghệ mới thành những câu chuyện đáng xem.')}</p><p>${t('My work spans commercial editing, cinematography, photography and generative AI. At OnPoint, I lead post-production with equal attention to the craft and the way audiences respond.', 'Công việc của tôi trải rộng từ dựng phim thương mại, quay phim, nhiếp ảnh đến AI tạo sinh. Tại OnPoint, tôi dẫn dắt hậu kỳ, chú trọng cả chất lượng sáng tạo lẫn phản hồi của khán giả.')}</p>    <div class="stats"><div>${counter(11.6, 'M+', 1)}<span>${t('Peak video views', 'Lượt xem cao nhất')}</span></div><div>${counter(40, '+')}<span>${t('Brands edited for', 'Thương hiệu đã dựng phim')}</span></div><div>${counter(allCount)}<span>${t('Projects to explore', 'Dự án để khám phá')}</span></div></div><div class="about-links"><a class="text-link" href="${contact}">${t('Let’s make something memorable', 'Cùng tạo nên điều đáng nhớ')} ${arrow}</a><a class="text-link" href="/Dat-Truong-CV.pdf" target="_blank" rel="noopener noreferrer">${t('Download Curriculum Vitae (PDF)', 'Tải Curriculum Vitae (PDF)')} ${arrow}</a></div></div></div>
     <div class="shell career-grid"><div><span class="eyebrow">${t('THE JOURNEY', 'HÀNH TRÌNH')}</span><h3>${t('Experience', 'Kinh nghiệm')}</h3><img class="presentation-photo" src="/presentation.jpg" alt="${t('Dat presenting an end-to-end video production workflow', 'Đạt trình bày quy trình sản xuất video toàn diện')}" loading="lazy"></div><div class="career-list">${experience.map((exp, i) => {
       const curLead = vi ? exp.leadVi : exp.lead;
       const curBullets = vi ? exp.bulletsVi : exp.bullets;
       return `<details class="career" ${i===0?'open':''}><summary><span class="career-company">${exp.company}</span><span class="career-role">${vi ? exp.roleVi : exp.role}</span><span class="career-date">${vi ? exp.dateVi : exp.date}</span><span class="career-plus">+</span></summary><div class="career-body"><p class="career-lead">${curLead}</p><ul class="career-bullets">${curBullets.map(([bTitle, bDesc]) => `<li><strong>${bTitle}:</strong> ${bDesc}</li>`).join('')}</ul></div></details>`;
     }).join('')}</div></div>
-    <div class="shell toolkit"><div><span class="eyebrow">${t('TOOLS OF THE TRADE', 'BỘ CÔNG CỤ')}</span><div class="tool-chips">${['Premiere Pro','After Effects','CapCut Pro','Illustrator','Audition','Runway','Kling','Vbee'].map(x=>`<span>${x}</span>`).join('')}</div></div><div class="credentials"><span class="eyebrow">${t('RECOGNITION & LEARNING', 'GHI NHẬN & HỌC TẬP')}</span><p><strong>${t('Sony Alpha Vietnam', 'Sony Alpha Việt Nam')}</strong><br>${t('Selection of the Month · August 2024', 'Video ấn tượng nhất tháng · 08.2024')}</p><details><summary>${t('Courses & credentials', 'Khóa học & Chứng chỉ')} <span>+</span></summary><ul><li>AI Video School: Veo3, Kling, Sora+ — Udemy, 27h, 03.2026</li><li>Diffusion Mastery: Flux, Stable Diffusion, Midjourney — Udemy, 22.5h, 03.2026</li><li>IELTS Academic 6.0 — IDP, 2019</li></ul></details></div></div></section>`;
+    ${toolkitHtml}</section>`;
 
   const serviceSection = `<section class="shell services-section" id="services"><div class="section-heading"><div><span class="eyebrow">04 / ${t('WHAT I DO', 'DỊCH VỤ')}</span><h2>${t('Production &<br>post-production', 'Sản xuất &<br>hậu kỳ')}</h2></div><p>${t('A clear scope, a consistent visual direction, and delivery tailored to each project.', 'Phạm vi rõ ràng, định hướng hình ảnh nhất quán và sản phẩm bàn giao phù hợp từng dự án.')}</p></div><div class="service-list">${services.map(([en,vn,d,dv,tags],i)=>`<a class="service-row" href="${contact}?service=${i}"><span class="service-number">0${i+1}</span><h3>${t(en,vn)}</h3><div><p>${t(d,dv)}</p><span class="service-tools">${tags}</span></div><span class="service-arrow">${arrow}</span></a>`).join('')}</div><div class="process"><span class="eyebrow">${t('THE PROCESS', 'QUY TRÌNH')}</span><div><span>01</span><h3>${t('Find the story', 'Tìm câu chuyện')}</h3><p>${t('Brief, script and visual direction.', 'Brief, kịch bản và định hướng hình ảnh.')}</p></div><div><span>02</span><h3>${t('Build the world', 'Tạo thế giới')}</h3><p>${t('Live-action production or AI-generated scenes.', 'Quay thực tế hoặc tạo cảnh bằng AI.')}</p></div><div><span>03</span><h3>${t('Make it move', 'Thổi sức sống')}</h3><p>${t('Edit, color, sound and final delivery.', 'Dựng phim, màu sắc, âm thanh và bàn giao.')}</p></div></div></section>`;
 
