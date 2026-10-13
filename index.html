@@ -143,17 +143,25 @@
             <div class="hero-visual">
               <svg class="hero-ribbons" viewBox="0 0 600 600" fill="none" aria-hidden="true" data-a="fade" data-out="0.84 1" data-out-type="fade">
                 <defs>
-                  <linearGradient id="ribbonA" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#67e8f9"/>
-                    <stop offset="100%" stop-color="#2563eb"/>
+                  <linearGradient id="ribbonA" gradientUnits="userSpaceOnUse" x1="132" y1="99" x2="546" y2="390">
+                    <stop offset="0%" stop-color="#67e8f9" stop-opacity="0"/>
+                    <stop offset="45%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+                    <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
                   </linearGradient>
-                  <linearGradient id="ribbonB" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stop-color="#1e3a8a"/>
-                    <stop offset="100%" stop-color="#00e5ff"/>
+                  <linearGradient id="ribbonB" gradientUnits="userSpaceOnUse" x1="250" y1="582" x2="52" y2="157">
+                    <stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/>
+                    <stop offset="55%" stop-color="#38bdf8" stop-opacity="0.85"/>
+                    <stop offset="100%" stop-color="#67e8f9" stop-opacity="0"/>
                   </linearGradient>
                 </defs>
-                <path class="ribbon ribbon-a" pathLength="1" data-draw="0.04 0.32" d="M 330 -10 C 470 40, 560 120, 540 260 S 470 470, 600 610"/>
-                <path class="ribbon ribbon-b" pathLength="1" data-draw="0.08 0.36" d="M -10 520 C 120 430, 260 560, 380 470 S 540 330, 610 360"/>
+                <circle class="orbit-ticks" cx="300" cy="300" r="232"/>
+                <circle class="ribbon orbit-ring" cx="300" cy="300" r="200" pathLength="1" transform="rotate(-90 300 300)" data-draw="0.02 0.3"/>
+                <path class="ribbon ribbon-glow ribbon-a" pathLength="1" data-draw="0.06 0.32" d="M 132 99 A 262 262 0 0 1 546 390"/>
+                <path class="ribbon ribbon-line ribbon-a" pathLength="1" data-draw="0.06 0.32" d="M 132 99 A 262 262 0 0 1 546 390"/>
+                <path class="ribbon ribbon-glow ribbon-b" pathLength="1" data-draw="0.1 0.36" d="M 250 582 A 286 286 0 0 1 52 157"/>
+                <path class="ribbon ribbon-line ribbon-b" pathLength="1" data-draw="0.1 0.36" d="M 250 582 A 286 286 0 0 1 52 157"/>
+                <circle class="orbit-node" cx="441" cy="159" r="3"/>
+                <circle class="orbit-node orbit-node-dim" cx="159" cy="441" r="2.4"/>
               </svg>
 
               <div class="hero-portrait-wrap" data-a="zoom" data-in="0.03 0.22" data-out="0.84 1" data-out-type="zoom">
