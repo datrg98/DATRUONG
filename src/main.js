@@ -64,8 +64,10 @@ let flowObserver = null;
 const progressLine = $('#scrollProgressLine');
 const orbs = $$('.ambient-orb');
 
+// Desktop scene layout for any landscape screen ≥ 900 × 460. Reduced-motion users keep the
+// same layout (the scrub is driven by their own scroll); only Lenis + ambient motion are disabled.
 const wantScenes = () =>
-  !reduceMotion.matches && window.innerWidth >= 900 && window.innerHeight >= 540;
+  window.innerWidth >= 900 && window.innerHeight >= 460;
 
 const getScroll = () => (lenis ? lenis.scroll : window.scrollY);
 

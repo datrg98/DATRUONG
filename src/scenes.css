@@ -1213,6 +1213,15 @@ html.lenis, html.lenis body { height: auto; }
   .pipe-steps .step-tab-btn { padding: 10px 14px; font-size: 14px; }
 }
 
+@media (max-height: 640px) and (min-width: 900px) {
+  .scenes-on .scene-stage { padding-top: 82px; padding-bottom: 12px; }
+  .scene-title { font-size: clamp(26px, 3.6vw, 44px); }
+  .hero-name { font-size: clamp(40px, 5.4vw, 76px); }
+  .hero-copy .tag-stream-pill { font-size: 11px; padding: 4px 10px; }
+  .j-card .node-desc { display: none; }
+  .tool-desc { display: none; }
+}
+
 /* ==========================================================================
    FALLBACK — NORMAL FLOW (mobile, small screens, reduced motion)
    ========================================================================== */
