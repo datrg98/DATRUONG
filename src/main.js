@@ -29,22 +29,24 @@ const easeIn = (t) => t * t * t;
 const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const parseRange = (s) => (s ? s.trim().split(/[\s,]+/).map(Number) : null);
 
+// Presets use only transform + opacity so every scrubbed frame stays on the GPU compositor
+// (animated CSS blur forces a full re-raster each frame and was the main source of jank).
 const IN = {
-  up: { y: 60, blur: 10 },
+  up: { y: 70 },
   rise: { y: 80, s: 0.94 },
-  down: { y: -50, blur: 6 },
+  down: { y: -56 },
   left: { x: -90 },
   right: { x: 90 },
-  zoom: { s: 0.8, blur: 8 },
+  zoom: { s: 0.84 },
   pop: { s: 0.45 },
-  blur: { s: 1.15, blur: 22 },
+  blur: { s: 1.12 },
   fade: {},
 };
 
 const OUT = {
-  up: { y: -50, blur: 8 },
+  up: { y: -60 },
   lift: { y: -60, s: 0.97 },
-  zoom: { s: 1.18, blur: 12 },
+  zoom: { s: 1.14 },
   down: { y: 50 },
   fade: {},
 };
@@ -141,7 +143,7 @@ function placeFollow(f, p) {
   if (!f.len) return;
   const t = span(p, f.r[0], f.r[1]);
   const pt = f.path.getPointAtLength(f.len * t);
-  const m = f.path.getScreenCTM();
+  const m = f.m || (f.m = f.path.getScreenCTM());
   if (!m) return;
   const x = pt.x * m.a + pt.y * m.c + m.e;
   const y = pt.x * m.b + pt.y * m.d + m.f;
@@ -273,7 +275,8 @@ const HOOKS = {
       const { star, pill } = sc.q;
       if (!star || !pill) return;
       // Star drifts in and lands on the corner of the pill (SAMPLE.mp4 00:40–00:42)
-      const r = pill.getBoundingClientRect();
+      if (!sc.q.rect || p < 0.4) sc.q.rect = pill.getBoundingClientRect();
+      const r = sc.q.rect;
       const tx = r.left + 6;
       const ty = r.top + 4;
       const ax = vw * 0.86;
@@ -332,7 +335,7 @@ function buildScenes() {
       const n = words.length;
       words.forEach((wEl, i) => {
         const start = r[0] + (n > 1 ? ((total - w) * i) / (n - 1) : 0);
-        sc.words.push({ el: wEl, in: [start, start + w], out: null, inT: { y: 28, blur: 12 }, outT: {}, key: '' });
+        sc.words.push({ el: wEl, in: [start, start + w], out: null, inT: { y: 34 }, outT: {}, key: '' });
       });
       if (node.dataset.out) {
         sc.anims.push({ el: node, in: null, out: parseRange(node.dataset.out), inT: {}, outT: OUT[node.dataset.outType || 'up'], key: '' });
@@ -443,7 +446,10 @@ function layout() {
   scenes.forEach((sc) => {
     sc.top = sc.el.getBoundingClientRect().top + y;
     sc.last = null;
-    sc.follows.forEach((f) => (f.len = f.path.getTotalLength()));
+    sc.follows.forEach((f) => {
+      f.len = f.path.getTotalLength();
+      f.m = null;
+    });
     layoutTracks(sc);
     sc.hook?.layout?.(sc);
   });
@@ -715,17 +721,23 @@ function bindSpotlight() {
   let my = vh / 2;
   let cx = mx;
   let cy = my;
+  let running = false;
+  const tick = () => {
+    cx += (mx - cx) * 0.12;
+    cy += (my - cy) * 0.12;
+    light.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0)`;
+    if (Math.abs(mx - cx) + Math.abs(my - cy) > 0.5) requestAnimationFrame(tick);
+    else running = false;
+  };
   window.addEventListener('pointermove', (e) => {
     mx = e.clientX;
     my = e.clientY;
-  });
-  const tick = () => {
-    cx += (mx - cx) * 0.1;
-    cy += (my - cy) * 0.1;
-    light.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0)`;
-    requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
+    if (!running) {
+      running = true;
+      requestAnimationFrame(tick);
+    }
+  }, { passive: true });
+  light.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
 }
 
 // --------------------------------------------------------------------------

@@ -71,6 +71,38 @@ html.lenis, html.lenis body { height: auto; }
 .scenes-on [data-a],
 .scenes-on .w { transition: none !important; }
 
+/* --------------------------------------------------------------------------
+   PERFORMANCE — keep every scroll frame on the GPU compositor
+   -------------------------------------------------------------------------- */
+
+/* Each pinned stage is an isolated paint/layout island */
+.scenes-on .scene-stage { contain: layout paint style; }
+
+/* Scrubbed elements live on stable layers (no re-raster when they move/fade) */
+.scenes-on [data-a] { will-change: transform, opacity; }
+
+/* Background glow: pre-softened gradients, no 100px live blur, no screen blending,
+   no competing CSS keyframes (JS parallax drives them) */
+.ambient-orb {
+  filter: none;
+  mix-blend-mode: normal;
+  animation: none;
+  opacity: 0.55;
+  will-change: translate;
+}
+
+/* Live backdrop blur behind moving content is recomputed every frame — use solid
+   glass instead (the fixed nav keeps its blur: one element, cheap) */
+.scenes-on .scene-stage * {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Hidden scenes: freeze their decorative loops */
+.scenes-on .scene:not(.is-visible) *,
+.scenes-on .scene:not(.is-visible) *::before,
+.scenes-on .scene:not(.is-visible) *::after { animation-play-state: paused !important; }
+
 .w { display: inline-block; }
 
 /* ==========================================================================
@@ -493,7 +525,7 @@ html.lenis, html.lenis body { height: auto; }
 .ribbon-a { stroke: url(#ribbonA); }
 .ribbon-b { stroke: url(#ribbonB); }
 .ribbon-line { stroke-width: 1.6; }
-.ribbon-glow { stroke-width: 7; opacity: 0.22; filter: blur(4px); }
+.ribbon-glow { stroke-width: 5; opacity: 0.14; }
 
 .orbit-ring {
   stroke: rgba(125, 211, 252, 0.22);
